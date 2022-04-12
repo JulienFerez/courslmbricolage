@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 const cartStore = () => {
   return (
     <>
-      <Navbar />
+      <Navbar user={undefined} />
       <div>Panier</div>
     </>
   );

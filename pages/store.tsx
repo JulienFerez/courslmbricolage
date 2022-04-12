@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 const store = () => {
   return (
     <>
-      <Navbar />
+      <Navbar user={undefined} />
       <div>store</div>
     </>
   );

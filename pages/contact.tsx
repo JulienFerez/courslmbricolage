@@ -8,7 +8,7 @@ import Image from "next/image";
 const contact = () => {
   return (
     <>
-      <Navbar />
+      <Navbar user={undefined} />
       <h1>Assistance technique</h1>
       <h3>Notre réseau dexperts à votre service</h3>
 
