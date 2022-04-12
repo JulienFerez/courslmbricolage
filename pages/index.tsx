@@ -6,12 +6,12 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import styles from "../styles/Home.module.css";
 
-export default function Home({ children }) {
+export default function Home({ children }): any {
   const { user, error, isLoading } = useUser();
   if (user) {
     return (
       <>
-        <Navbar />
+        <Navbar user={user} />
         <Image
           src="/images/homePage.png"
           alt="homePage.png"
@@ -64,7 +64,7 @@ export default function Home({ children }) {
     return (
       <>
         <div className="containerHomePage">
-          <Navbar />
+          <Navbar user={undefined} />
           <Image
             src="/images/homePage.png"
             alt="homePage.png"
