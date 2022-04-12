@@ -34,3 +34,12 @@ a {
   margin: auto;
   padding: auto;
 }
+.containerCategory {
+  display: flex;
+}
+.elementCategory {
+  border: solid;
+  margin: auto;
+  padding: 3rem;
+  text-align: center;
+}
