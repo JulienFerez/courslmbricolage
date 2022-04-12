@@ -16,14 +16,16 @@ const Layout = ({ user }): any => {
         <nav>
           <div className="container">
             <div className="Element1">
-              <Image
-                width={150}
-                height={100}
-                src="/images/logoCampus.png"
-                alt="logoCampus.png"
-              />
+              <Link href="/" passHref={true}>
+                <Image
+                  width={150}
+                  height={100}
+                  src="/images/logoCampus.png"
+                  alt="logoCampus.png"
+                />
+              </Link>
             </div>
-
+            <div>Welcome {user.name}</div>
             <Link href="/" passHref={true}>
               <button>Home</button>
             </Link>
