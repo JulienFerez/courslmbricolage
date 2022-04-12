@@ -35,6 +35,16 @@ a {
   padding: auto;
 }
 
+.containerCategory {
+  display: flex;
+}
+.elementCategory {
+  border: solid;
+  margin: auto;
+  padding: 3rem;
+  text-align: center;
+}
+
 table,
 td {
   border: 1px solid #333;
@@ -44,4 +54,5 @@ thead,
 tfoot {
   background-color: #333;
   color: #fff;
+
 }
