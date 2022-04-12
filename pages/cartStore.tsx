@@ -1,13 +1,13 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 
-const onlineStore = () => {
+const cartStore = () => {
   return (
     <>
       <Navbar />
-      <div>onlinestore</div>
+      <div>Panier</div>
     </>
   );
 };
 
-export default onlineStore;
+export default cartStore;

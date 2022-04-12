@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
+import Image from "next/image";
 
 const Layout = () => {
   return (
@@ -11,18 +12,32 @@ const Layout = () => {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <nav>
-        <Link href="/">
-          <button>Home</button>
-        </Link>
-        <Link href="/store">
-          <button>Mon magasin</button>
-        </Link>
-        <Link href="/api/auth/login">
-          <button>Se connecter</button>
-        </Link>
-        <Link href="/api/auth/logout">
-          <button>Panier</button>
-        </Link>
+        <div className="container">
+          <div className="Element1">
+            <Image
+              width={150}
+              height={100}
+              src="/images/logoCampus.png"
+              alt="logoCampus.png"
+            />
+          </div>
+
+          <Link href="/" passHref={true}>
+            <button>Home</button>
+          </Link>
+          <Link href="/store" passHref={true}>
+            <button>Mon magasin</button>
+          </Link>
+          <Link href="/api/auth/login" passHref={true}>
+            <button>Se connecter</button>
+          </Link>
+          <Link href="/api/auth/logout" passHref={true}>
+            <button>Se déconnecter</button>
+          </Link>
+          <Link href="/cartStore" passHref={true}>
+            <button>Panier</button>
+          </Link>
+        </div>
       </nav>
     </>
   );

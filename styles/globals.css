@@ -14,3 +14,23 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.container {
+  display: flex;
+  padding-bottom: 2rem;
+}
+
+.Element {
+  padding: 2rem;
+  margin: auto;
+}
+
+.Element1 {
+  margin-right: 55rem;
+}
+
+.containerHomePage {
+  text-align: center;
+  margin: auto;
+  padding: auto;
+}
