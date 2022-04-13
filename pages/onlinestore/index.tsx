@@ -42,7 +42,12 @@ const onlineStore = ({ category }) => {
                 <br />
                 <br />
                 <div>
-                  <img width={100} height={100} src={element.image} alt="" />
+                  <img
+                    width={100}
+                    height={100}
+                    src={element.image}
+                    alt="toto"
+                  />
                 </div>
               </div>
             </Link>

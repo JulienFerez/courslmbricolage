@@ -54,5 +54,35 @@ thead,
 tfoot {
   background-color: #333;
   color: #fff;
+}
 
+.ContainerTuto {
+  text-align: center;
+}
+
+.ContainerTutoDescription {
+  padding-top: 2rem;
+}
+
+.ContainerTutoVideo {
+  display: flex;
+  padding-top: 4rem;
+  justify-content: center;
+}
+
+.ContainerTutoButton {
+  padding-top: 4rem;
+}
+.containerList {
+  display: flex;
+  justify-content: center;
+}
+.containerListElement {
+  border: solid;
+  margin: auto;
+}
+
+.containerListImage {
+  margin: auto;
+  text-align: center;
 }
