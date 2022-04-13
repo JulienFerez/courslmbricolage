@@ -4,104 +4,48 @@ import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Image from "next/image";
 import Link from "next/link";
 import { UserProvider, useUser } from "@auth0/nextjs-auth0";
+import { getDatabase } from "../../src/database";
+import { GetServerSideProps } from "next";
 
-export default withPageAuthRequired(function Profile({ user }) {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const mongodb = await getDatabase();
+  const category = await mongodb.collection("category").find().toArray();
+  const categoryString = await JSON.parse(JSON.stringify(category));
+
+  // console.log(categoryString);
+
+  return {
+    props: {
+      category: categoryString,
+    },
+  };
+};
+
+export default withPageAuthRequired(function Profile({ user, category }) {
   return (
     <>
-      <Navbar user={user} />
-      <table>
-        <thead>
-          <tr>
-            <th colSpan={5}>
-              <div>Quel est votre projet ?</div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="Element1">
-            <td>
-              <Link href="/store/1" passHref={true}>
-                {/* {`/games/${[element.slug]}`} */}
-                {/* Attention changer route contact à fiche catégorie avec slug  */}
-                <button>
-                  <a>
-                    <Image
-                      width={150}
-                      height={100}
-                      src="/images/logoCampus.png"
-                      alt="logoCampus.png"
-                    />
-                  </a>
-                </button>
-              </Link>
-            </td>
-            <td>
-              <Link href="/store/2" passHref={true}>
-                {/* {`/games/${[element.slug]}`} */}
-                {/* Attention changer route contact à fiche catégorie avec slug  */}
-                <button>
-                  <a>
-                    <Image
-                      width={150}
-                      height={100}
-                      src="/images/logoCampus.png"
-                      alt="logoCampus.png"
-                    />
-                  </a>
-                </button>
-              </Link>
-            </td>
-            <td>
-              <Link href="/store/3" passHref={true}>
-                {/* {`/games/${[element.slug]}`} */}
-                {/* Attention changer route contact à fiche catégorie avec slug  */}
-                <button>
-                  <a>
-                    <Image
-                      width={150}
-                      height={100}
-                      src="/images/logoCampus.png"
-                      alt="logoCampus.png"
-                    />
-                  </a>
-                </button>
-              </Link>
-            </td>
-            <td>
-              <Link href="/store/4" passHref={true}>
-                {/* {`/games/${[element.slug]}`} */}
-                {/* Attention changer route contact à fiche catégorie avec slug  */}
-                <button>
-                  <a>
-                    <Image
-                      width={150}
-                      height={100}
-                      src="/images/logoCampus.png"
-                      alt="logoCampus.png"
-                    />
-                  </a>
-                </button>
-              </Link>
-            </td>
-            <td>
-              <Link href="/store/5" passHref={true}>
-                {/* {`/games/${[element.slug]}`} */}
-                {/* Attention changer route contact à fiche catégorie avec slug  */}
-                <button>
-                  <a>
-                    <Image
-                      width={150}
-                      height={100}
-                      src="/images/logoCampus.png"
-                      alt="logoCampus.png"
-                    />
-                  </a>
-                </button>
-              </Link>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <Navbar user={undefined} />
+      <div className="containerCategory">
+        {category.map((element: any) => {
+          // console.log(element);
+          return (
+            <Link
+              href={`/store/${element.name}`}
+              key="{element.name}"
+              passHref={true}
+            >
+              <div className="elementCategory" key={element.name}>
+                {element.name}
+                <br />
+                <br />
+                <div>
+                  <img width={100} height={100} src={element.image} alt="" />
+                </div>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
     </>
   );
 });

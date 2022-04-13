@@ -30,10 +30,7 @@ export default function Home({ children }): any {
 
         <h1>Toutes les solutions pour apprendre à votre rythme</h1>
         <div>
-
-          <div>Welcome{user.name}</div>
           <Link href="/onlinestore" passHref={true}>
-
             <Image
               width={200}
               height={200}

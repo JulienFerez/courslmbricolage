@@ -10,7 +10,7 @@ import { truncate } from "fs";
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const mongodb = await getDatabase();
 
-  const category = await mongodb.db().collection("category").find().toArray();
+  const category = await mongodb.collection("category").find().toArray();
 
   const categoryString = await JSON.parse(JSON.stringify(category));
 

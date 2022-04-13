@@ -1,29 +1,66 @@
 import React from "react";
 import Navbar from "../../../../components/Navbar";
-import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+import { GetServerSideProps } from "next";
+import { getDatabase } from "../../../../src/database";
+import ReactPlayer from "react-player";
+
 import Image from "next/image";
 import Link from "next/link";
-import { UserProvider, useUser } from "@auth0/nextjs-auth0";
-import { GetServerSideProps } from "next";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const slug = await context.params;
-  // console.log(slug);
+  const slug = context.params;
+  console.log("slug", slug);
 
-  // appel à la db avec le slug
+  const mongodb = await getDatabase();
+
+  const cours = await mongodb
+    .collection("category")
+    .find({ name: `${slug.store_slug}` })
+    .toArray();
+
+  const coursString = await JSON.parse(JSON.stringify(cours));
+
   return {
     props: {
+      coursString: coursString,
       slug: slug,
     },
   };
 };
-
-export default withPageAuthRequired(function Profile({ user, slug }) {
+const category = ({ coursString, slug }) => {
+  console.log("tutoString--------------------", coursString);
   return (
     <>
-      <Navbar user={user} />
-      <div>COUCOU</div>
-      <div>Mon slug est : {slug.slug_details}</div>
+      <Navbar user={undefined} />
+      <div>
+        {coursString[0].cours.map((element: any) => {
+          if (element.title === slug.slug_details) {
+            return (
+              <div>
+                <div className="ContainerTuto" key={element.title}>
+                  <h3>{element.title}</h3>
+                  <div className="ContainerTutoDescription">
+                    {element.description}
+                  </div>
+                  <div className="ContainerTutoDescription">
+                    <img src={element.image} />
+                  </div>
+                </div>
+                <div className="ContainerTutoDescription">{element.prix}</div>
+                <div className="ContainerTutoButton">
+                  <button>Page Précédente</button>
+                  <button>Retour aux catégories</button>
+                  <button>Home Page</button>
+                </div>
+              </div>
+            );
+          } else {
+            <>toto</>;
+          }
+        })}
+      </div>
     </>
   );
-});
+};
+
+export default category;

@@ -14,7 +14,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const mongodb = await getDatabase();
 
   const tuto = await mongodb
-    .db()
     .collection("category")
     .find({ name: `${slug.category}` })
     .toArray();

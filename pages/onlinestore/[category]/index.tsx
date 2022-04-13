@@ -13,7 +13,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const mongodb = await getDatabase();
 
   const category = await mongodb
-    .db()
     .collection("category")
     .find({ name: `${slug}` })
     .toArray();
