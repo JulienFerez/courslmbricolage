@@ -1,4 +1,4 @@
-import { getDatabase } from "../../src/utils/database";
+import { getDatabase } from "../../src/database";
 
 export default async function handler(
   req: { query: { date: string; category: string; class: string } },
@@ -12,7 +12,6 @@ export default async function handler(
   const mongodb = await getDatabase();
 
   const getArray = await mongodb
-    .db()
     .collection("test")
     .find({ name: req.query.category })
     .toArray();
@@ -24,17 +23,14 @@ export default async function handler(
     date: req.query.date,
   });
 
-  const user = await mongodb
-    .db()
-    .collection("test")
-    .updateOne(
-      { name: req.query.category },
-      {
-        $set: {
-          cours: modifiedArray,
-        },
-      }
-    );
+  const user = await mongodb.collection("test").updateOne(
+    { name: req.query.category },
+    {
+      $set: {
+        cours: modifiedArray,
+      },
+    }
+  );
 
   console.log(modifiedArray[index].creneaux);
 

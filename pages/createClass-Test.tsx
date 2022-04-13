@@ -1,22 +1,17 @@
 import { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
 import React from "react";
-import { getDatabase } from "../src/utils/database";
+import { getDatabase } from "../src/database";
 
 export const getServerSideProps: GetServerSideProps = async ({}: any) => {
   const mongodb = await getDatabase();
   const responseDispo = await mongodb
-    .db()
     .collection("disponibility")
     .find()
     .toArray();
   const dispo = await JSON.parse(JSON.stringify(responseDispo));
 
-  const responseCategory = await mongodb
-    .db()
-    .collection("test")
-    .find()
-    .toArray();
+  const responseCategory = await mongodb.collection("test").find().toArray();
   const category = await JSON.parse(JSON.stringify(responseCategory));
 
   return {
