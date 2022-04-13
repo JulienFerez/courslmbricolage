@@ -31,7 +31,7 @@ const category = ({ coursString, slug }) => {
     <>
       <Navbar user={undefined} />
       <div className="containerList">
-        {coursString[0].tutotest.map((element) => {
+        {coursString[0].cours.map((element) => {
           return (
             <div className="containerListElement" key={element.title}>
               <Link href={`/store/${slug.store_slug}/${element.title}`}>

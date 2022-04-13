@@ -34,6 +34,8 @@ const category = ({ coursString, slug }) => {
       <Navbar user={undefined} />
       <div>
         {coursString[0].cours.map((element: any) => {
+          // console.log("----ELEMENT----", element);
+          // console.log("slug----", slug.slug_details);
           if (element.title === slug.slug_details) {
             return (
               <div>
