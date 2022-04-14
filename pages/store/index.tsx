@@ -22,7 +22,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 export default withPageAuthRequired(function Profile({ user, category }) {
-  console.log("user", user);
   return (
     <>
       <Navbar user={user} />
