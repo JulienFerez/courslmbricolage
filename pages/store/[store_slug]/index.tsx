@@ -26,10 +26,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   };
 };
-const category = ({ coursString, slug }) => {
+const category = ({ coursString, slug, user }) => {
   return (
     <>
-      <Navbar user={undefined} />
+      <Navbar user={user} />
       <div className="containerList">
         {coursString[0].cours.map((element) => {
           return (
