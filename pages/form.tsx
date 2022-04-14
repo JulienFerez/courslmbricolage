@@ -1,10 +1,16 @@
-import { useUser } from "@auth0/nextjs-auth0";
+import { getSession, useUser } from "@auth0/nextjs-auth0";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
 import React from "react";
 import { getDatabase } from "../src/database";
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  res,
+}: any) => {
+  const session = getSession(req, res);
+  const email = session?.user.email;
+
   const mongodb = await getDatabase();
   const usersResponse = await mongodb.collection("users").find().toArray();
 
@@ -13,26 +19,42 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
       users: users,
+      email: email,
     },
   };
 };
 
-const Form = ({ users }) => {
-  const { user, error, isLoading } = useUser();
-  const [userExist, setUserExist] = React.useState(false);
-  const [email, setEmail] = React.useState("");
+const Form: React.FC<{ users: any; email: string }> = ({ users, email }) => {
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   const [adress, setAdress] = React.useState("");
   const [city, setCity] = React.useState("");
   const [tel, setTel] = React.useState("");
+  let stateTest = false;
+  console.log(email);
+  console.log(stateTest);
 
-  user &&
-    users.map((use: any) => {
-      use.email === user.email ? setUserExist(true) : null;
-    });
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].email === email) {
+      stateTest = true;
+    }
+  }
 
-  if (!userExist) {
+  // users.map((element: any) => {
+  //   if (element.email === email) {
+  //     setUserExist(true);
+  //   }
+  // });
+
+  if (stateTest === true) {
+    return (
+      <div>
+        <a href="/store">
+          <button>go to store</button>
+        </a>
+      </div>
+    );
+  } else {
     return (
       <>
         <form>
@@ -83,14 +105,12 @@ const Form = ({ users }) => {
           </div>
         </form>
         <Link
-          href={`/api/createUser?firstName=${firstName}&lastName=${lastName}&adress=${adress}&city=${city}&tel=${tel}`}
+          href={`/api/createUser?firstName=${firstName}&email=${email}&lastName=${lastName}&adress=${adress}&city=${city}&tel=${tel}`}
         >
           <a>submit</a>
         </Link>
       </>
     );
-  } else {
-    return <div>Test</div>;
   }
 };
 

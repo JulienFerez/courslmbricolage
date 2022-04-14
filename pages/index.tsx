@@ -39,7 +39,7 @@ export default function Home({ children }): any {
             />
           </Link>
           {/* <h5>Tutos en ligne</h5> */}
-          <Link href="/store" passHref={true}>
+          <Link href="/form" passHref={true}>
             <Image
               width={200}
               height={200}
@@ -84,6 +84,7 @@ export default function Home({ children }): any {
         </div>
 
         <div className="container">
+          {/* pour acceder aux tutos */}
           <Link href="/onlinestore" passHref={true}>
             <div>
               <Image
@@ -95,8 +96,8 @@ export default function Home({ children }): any {
               <h4>Nos tutos de bricolage en ligne</h4>
             </div>
           </Link>
-
-          <Link href="/store" passHref={true}>
+          {/*pour acceder aux cours   */}
+          <Link href="/form" passHref={true}>
             <div>
               <Image
                 width={500}
@@ -107,6 +108,7 @@ export default function Home({ children }): any {
               <h4>Nos cours en magasin</h4>
             </div>
           </Link>
+          {/* pour acceder page contact  */}
           <Link href="/contact" passHref={true}>
             <div>
               <Image
