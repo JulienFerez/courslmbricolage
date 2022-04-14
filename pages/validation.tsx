@@ -1,7 +1,7 @@
 import React from "react";
 
 const validation = () => {
-  return <div>toto</div>;
+  return <div>validation</div>;
 };
 
 export default validation;

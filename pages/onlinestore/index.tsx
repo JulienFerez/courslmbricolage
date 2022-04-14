@@ -23,11 +23,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-const onlineStore = ({ category }) => {
+const onlineStore = ({ category, user }) => {
   console.log(category);
   return (
     <>
-      <Navbar user={undefined} />
+      <Navbar user={user} />
       <div className="containerCategory">
         {category.map((element: any) => {
           console.log(element);

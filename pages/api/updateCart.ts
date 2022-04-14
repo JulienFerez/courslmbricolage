@@ -1,23 +1,12 @@
 import { getDatabase } from "../../src/database";
 import { GetServerSideProps } from "next";
-import { getSession, UserProvider, useUser } from "@auth0/nextjs-auth0";
+import { UserProvider, useUser } from "@auth0/nextjs-auth0";
 
-export const getServerSideProps: GetServerSideProps = async ({
-  req,
-  res,
-}: any) => {
-  const session = getSession(req, res);
-  const email = session?.user.email;
+import ReactPlayer from "react-player";
 
-  console.log("email", email);
-  console.log(email);
+import Image from "next/image";
+import Link from "next/link";
 
-  return {
-    props: {
-      email: email,
-    },
-  };
-};
 export default async function handler(
   req: {
     body: {
@@ -25,12 +14,10 @@ export default async function handler(
     };
   },
 
-  res: { redirect: (arg0: string, arg1: number) => void },
-  email
+  res: { redirect: (arg0: string, arg1: number) => void }
 ) {
-  console.log("email", email);
-  console.log({ email });
   const data = req.body.creneau;
+  console.log("dataz", data);
   const dataParse = JSON.parse(data);
 
   const mongodb = await getDatabase();
@@ -41,4 +28,5 @@ export default async function handler(
     .toArray();
 
   console.log(users);
+  res.redirect("/cartStore", 302);
 }

@@ -6,6 +6,7 @@ import ReactPlayer from "react-player";
 
 import Image from "next/image";
 import Link from "next/link";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const slug = context.params;
@@ -26,7 +27,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   };
 };
-const category = ({ coursString, slug, user }) => {
+
+export default withPageAuthRequired(function Profile({
+  coursString,
+  slug,
+  user,
+}) {
   return (
     <>
       <Navbar user={user} />
@@ -53,6 +59,4 @@ const category = ({ coursString, slug, user }) => {
       </div>
     </>
   );
-};
-
-export default category;
+});

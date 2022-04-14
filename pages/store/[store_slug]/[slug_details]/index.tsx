@@ -29,7 +29,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   };
 };
-const Category = ({ coursString, slug, user }) => {
+
+export default withPageAuthRequired(function Profile({
+  coursString,
+  slug,
+  user,
+}) {
   const [form, setForm] = React.useState("");
 
   return (
@@ -57,7 +62,7 @@ const Category = ({ coursString, slug, user }) => {
                             <input
                               type="radio"
                               name="creneau"
-                              value={`{"day": "${slot.day}", "hours": "${slot.hours}", "id_prof": "${slot.id_prof}"}`}
+                              value={`{"day": "${slot.day}", "hours": "${slot.hours}", "id_prof": "${slot.id_prof}", "email": "${user.email}"}`}
                               onChange={(e) => setForm(slot)}
                             ></input>
 
@@ -97,6 +102,4 @@ const Category = ({ coursString, slug, user }) => {
       </div>
     </>
   );
-};
-
-export default Category;
+});
