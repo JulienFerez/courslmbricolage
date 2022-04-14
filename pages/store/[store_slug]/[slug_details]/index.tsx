@@ -3,13 +3,15 @@ import Navbar from "../../../../components/Navbar";
 import { GetServerSideProps } from "next";
 import { getDatabase } from "../../../../src/database";
 import ReactPlayer from "react-player";
+import { useUser } from "@auth0/nextjs-auth0";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 import Image from "next/image";
 import Link from "next/link";
+import Footer from "../../../../components/Footer";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const slug = context.params;
-  console.log("slug", slug);
 
   const mongodb = await getDatabase();
 
@@ -27,15 +29,19 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   };
 };
-const category = ({ coursString, slug }) => {
-  console.log("tutoString--------------------", coursString);
+
+export default withPageAuthRequired(function Profile({
+  coursString,
+  slug,
+  user,
+}) {
+  const [form, setForm] = React.useState("");
+
   return (
     <>
-      <Navbar user={undefined} />
+      <Navbar user={user} />
       <div>
         {coursString[0].cours.map((element: any) => {
-          // console.log("----ELEMENT----", element);
-          // console.log("slug----", slug.slug_details);
           if (element.title === slug.slug_details) {
             return (
               <div>
@@ -49,14 +55,15 @@ const category = ({ coursString, slug }) => {
                   </div>
 
                   <div>
-                    <form method="POST" action="">
+                    <form method="POST" action="/api/updateCart">
                       {element.creneaux.map((slot, index) => {
                         return (
                           <div key={index}>
                             <input
                               type="radio"
                               name="creneau"
-                              value={slot.day}
+                              value={`{"day": "${slot.day}", "hours": "${slot.hours}", "id_prof": "${slot.id_prof}", "email": "${user.email}"}`}
+                              onChange={(e) => setForm(slot)}
                             ></input>
 
                             {slot.day}
@@ -65,11 +72,12 @@ const category = ({ coursString, slug }) => {
                           </div>
                         );
                       })}
+                      <input type="submit" value="Envoyer" />
                     </form>
+                    <button onClick={() => console.log(form)}>Bouton </button>
                   </div>
-
-                  <input type="submit" value="Envoyer" />
                 </div>
+
                 <div className="ContainerTutoDescription">{element.prix}</div>
                 <div className="ContainerTutoButton">
                   <Link href={`/store/${slug.store_slug}`} passHref={true}>
@@ -94,6 +102,4 @@ const category = ({ coursString, slug }) => {
       </div>
     </>
   );
-};
-
-export default category;
+});
