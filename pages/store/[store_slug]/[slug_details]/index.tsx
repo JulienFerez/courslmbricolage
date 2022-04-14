@@ -45,14 +45,45 @@ const category = ({ coursString, slug }) => {
                     {element.description}
                   </div>
                   <div className="ContainerTutoDescription">
-                    <img src={element.image} />
+                    <img width={200} height={200} src={element.image} />
                   </div>
+
+                  <div>
+                    <form method="POST" action="">
+                      {element.creneaux.map((slot, index) => {
+                        return (
+                          <div key={index}>
+                            <input
+                              type="radio"
+                              name="creneau"
+                              value={slot.day}
+                            ></input>
+
+                            {slot.day}
+                            {slot.hours}
+                            {slot.id_prof}
+                          </div>
+                        );
+                      })}
+                    </form>
+                  </div>
+
+                  <input type="submit" value="Envoyer" />
                 </div>
                 <div className="ContainerTutoDescription">{element.prix}</div>
                 <div className="ContainerTutoButton">
-                  <button>Page Précédente</button>
-                  <button>Retour aux catégories</button>
-                  <button>Home Page</button>
+                  <Link href={`/store/${slug.store_slug}`} passHref={true}>
+                    <button>Page Précédente</button>
+                  </Link>
+                  <Link href="/store" passHref={true}>
+                    <button>Retour aux catégories</button>
+                  </Link>
+                  <Link href="/" passHref={true}>
+                    <button>Home Page</button>
+                  </Link>
+                  <Link href="/validation" passHref={true}>
+                    <button>Valider</button>
+                  </Link>
                 </div>
               </div>
             );

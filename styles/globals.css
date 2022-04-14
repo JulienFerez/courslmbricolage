@@ -86,3 +86,7 @@ tfoot {
   margin: auto;
   text-align: center;
 }
+.slot {
+  border: solid;
+  margin-bottom: 4rem;
+}
