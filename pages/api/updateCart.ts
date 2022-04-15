@@ -29,12 +29,12 @@ export default async function handler(
 
   console.log("dataparse", dataParse);
   const cart = users[0];
-  cart.class.push(dataParse);
+  cart.panier.push(dataParse);
   console.log("users", users);
 
   const newClass = await mongodb
     .collection("users")
-    .updateOne({ email: dataParse.email }, { $set: { class: cart.class } });
+    .updateOne({ email: dataParse.email }, { $set: { panier: cart.panier } });
 
   console.log(users);
   res.redirect("/cartStore", 302);

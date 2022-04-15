@@ -1,6 +1,7 @@
 import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { dividerClasses } from "@mui/material";
 import { GetServerSideProps } from "next";
+import Link from "next/link";
 import React from "react";
 import Navbar from "../components/Navbar";
 import { getDatabase } from "../src/database";
@@ -43,7 +44,7 @@ export default withPageAuthRequired(function Profile({ panierString, user }) {
               <p>{element.tel}</p>
               <h4>Panier</h4>
               {console.log({ element })}
-              {element.class.map((item: any) => {
+              {element.panier.map((item: any) => {
                 console.log(item);
                 return (
                   <div>
@@ -56,6 +57,9 @@ export default withPageAuthRequired(function Profile({ panierString, user }) {
             </div>
           );
         })}
+        <Link href={`/api/validClassBuy?email=${user.email}`} passHref={true}>
+          Valider et payer
+        </Link>
       </div>
     </>
   );
