@@ -1,10 +1,7 @@
 import React from "react";
-import Navbar from "../../../components/Navbar";
+import Layout from "../../../components/Layout";
 import { GetServerSideProps } from "next";
 import { getDatabase } from "../../../src/database";
-import ReactPlayer from "react-player";
-
-import Image from "next/image";
 import Link from "next/link";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
@@ -34,8 +31,7 @@ export default withPageAuthRequired(function Profile({
   user,
 }) {
   return (
-    <>
-      <Navbar user={user} />
+    <Layout user={user}>
       <div className="containerList">
         {coursString[0].cours.map((element) => {
           return (
@@ -57,6 +53,6 @@ export default withPageAuthRequired(function Profile({
           );
         })}
       </div>
-    </>
+    </Layout>
   );
 });

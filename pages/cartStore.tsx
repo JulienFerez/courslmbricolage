@@ -1,9 +1,8 @@
 import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
-import { dividerClasses } from "@mui/material";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
 import React from "react";
-import Navbar from "../components/Navbar";
+import Layout from "../components/Layout";
 import { getDatabase } from "../src/database";
 
 export const getServerSideProps: GetServerSideProps = async ({
@@ -29,8 +28,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 };
 export default withPageAuthRequired(function Profile({ panierString, user }) {
   return (
-    <>
-      <Navbar user={user} />
+    <Layout user={user}>
       <div>
         {panierString.map((element: any) => {
           return (
@@ -61,6 +59,6 @@ export default withPageAuthRequired(function Profile({ panierString, user }) {
           Valider et payer
         </Link>
       </div>
-    </>
+    </Layout>
   );
 });

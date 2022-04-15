@@ -25,6 +25,7 @@ export default async function handler(
     admin: false,
     prof: false,
     panier: [],
+    classBuy: [],
     class: [],
   });
 

@@ -1,22 +1,9 @@
-// import React from "react";
-
-// const profil = () => {
-//   return <div>profil</div>;
-// };
-
-// export default profil;
-
 import React from "react";
 import { useUser } from "@auth0/nextjs-auth0";
-import { withPageAuthRequired } from "@auth0/nextjs-auth0";
-import Image from "next/image";
 import { getSession } from "@auth0/nextjs-auth0";
 import { GetServerSideProps } from "next";
 import { getDatabase } from "../src/database";
-import Navbar from "../components/Navbar";
-
-// const session = getSession(req, res);
-// console.log(session);
+import Layout from "../components/Layout";
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,
@@ -54,41 +41,59 @@ export default function Profile({ users }) {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
   console.log("-----users", users);
-
-  return (
-    // user && (
-    //   <div className="containerHomePage">
-    //     <h1>Mon profil</h1>
-
-    //     <img src={user.picture} alt={user.name} />
-    //     <h2>{user.name}</h2>
-    //     <p>{user.email}</p>
-    //   </div>
-    // )
-    <>
-      <Navbar user={user} />
-      <div>
+  if (!users.prof) {
+    return (
+      <Layout user={user}>
         <div>
-          <h4>Récapitulatif Utilisateur</h4>
-          <p>{users.firstName}</p>
-          <p>{users.lastName}</p>
-          <p>{users.email}</p>
-          <p>{users.adress}</p>
-          <p>{users.city}</p>
-          <p>{users.tel}</p>
-          <h4>Mes prochains cours</h4>
-          {users.classBuy.map((item: any) => {
-            console.log(item);
-            return (
-              <div>
-                <p>{item.id_prof}</p>
-                <p>{item.day}</p>
-                <p>{item.hours}</p>
-              </div>
-            );
-          })}
+          <div>
+            <h4>Récapitulatif Utilisateur</h4>
+            <p>{users.firstName}</p>
+            <p>{users.lastName}</p>
+            <p>{users.email}</p>
+            <p>{users.adress}</p>
+            <p>{users.city}</p>
+            <p>{users.tel}</p>
+            <h4>Mes prochains cours</h4>
+            {users.classBuy.map((item: any) => {
+              console.log(item);
+              return (
+                <div>
+                  <p>{item.id_prof}</p>
+                  <p>{item.day}</p>
+                  <p>{item.hours}</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </>
-  );
+      </Layout>
+    );
+  } else {
+    return (
+      <Layout user={user}>
+        <div>
+          <div>
+            <h4>Récapitulatif Prof</h4>
+            <p>{users.firstName}</p>
+            <p>{users.lastName}</p>
+            <p>{users.email}</p>
+            <p>{users.adress}</p>
+            <p>{users.city}</p>
+            <p>{users.tel}</p>
+            <h4>Mes prochains cours</h4>
+            {users.class.map((item: any) => {
+              console.log(item);
+              return (
+                <div>
+                  <p>{item.id_prof}</p>
+                  <p>{item.day}</p>
+                  <p>{item.hours}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </Layout>
+    );
+  }
 }

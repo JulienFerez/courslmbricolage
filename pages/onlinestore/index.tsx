@@ -1,11 +1,9 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
+import Layout from "../../components/Layout";
 import { GetServerSideProps } from "next";
 import { getDatabase } from "../../src/database";
-import { elementTypeAcceptingRef } from "@mui/utils";
-import Image from "next/image";
 import Link from "next/link";
-import { truncate } from "fs";
+import { useUser } from "@auth0/nextjs-auth0";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const mongodb = await getDatabase();
@@ -23,11 +21,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-const onlineStore = ({ category, user }) => {
-  console.log(category);
+const onlineStore = ({ category }) => {
+  const { user, error, isLoading } = useUser();
+
   return (
-    <>
-      <Navbar user={user} />
+    <Layout user={user}>
       <div className="containerCategory">
         {category.map((element: any) => {
           console.log(element);
@@ -54,7 +52,7 @@ const onlineStore = ({ category, user }) => {
           );
         })}
       </div>
-    </>
+    </Layout>
   );
 };
 
