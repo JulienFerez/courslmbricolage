@@ -63,7 +63,7 @@ export default function Home({ children }): any {
     return (
       <>
         <div className="containerHomePage">
-          <Navbar user={undefined} />
+          <Navbar user={undefined}  />
           <Image
             src="/images/homePage.png"
             alt="homePage.png"

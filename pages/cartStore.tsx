@@ -1,21 +1,15 @@
-import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
-import { dividerClasses } from "@mui/material";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { GetServerSideProps } from "next";
 import React from "react";
 import Navbar from "../components/Navbar";
 import { getDatabase } from "../src/database";
 
-export const getServerSideProps: GetServerSideProps = async ({
-  req,
-  res,
-}: any) => {
-  const session = getSession(req, res);
-  const email = session?.user.email;
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const mongodb = await getDatabase();
 
   const panier = await mongodb
     .collection("users")
-    .find({ email: email })
+    .find({ firstName: "Julien" })
     .toArray();
 
   const panierString = await JSON.parse(JSON.stringify(panier));
@@ -41,18 +35,8 @@ export default withPageAuthRequired(function Profile({ panierString, user }) {
               <p>{element.adress}</p>
               <p>{element.city}</p>
               <p>{element.tel}</p>
+
               <h4>Panier</h4>
-              {console.log({ element })}
-              {element.class.map((item: any) => {
-                console.log(item);
-                return (
-                  <div>
-                    <p>{item.id_prof}</p>
-                    <p>{item.day}</p>
-                    <p>{item.hours}</p>
-                  </div>
-                );
-              })}
             </div>
           );
         })}

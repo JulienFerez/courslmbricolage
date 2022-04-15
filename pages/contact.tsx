@@ -4,11 +4,13 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import MailIcon from "@mui/icons-material/Mail";
 import Image from "next/image";
+import { useUser } from "@auth0/nextjs-auth0";
 
 const contact = () => {
+  const { user, error, isLoading } = useUser();
   return (
     <>
-      <Navbar user={undefined} />
+      <Navbar user={user}/>
       <h1>Assistance technique</h1>
       <h3>Notre réseau dexperts à votre service</h3>
 
