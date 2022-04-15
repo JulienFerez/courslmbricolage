@@ -51,6 +51,13 @@ const category = ({ tutoString, slug }) => {
           );
         })}
       </div>
+      <Link href="/onlinestore">
+        <button>Retour aux différents rayon</button>
+      </Link>
+
+      <Link href="/">
+        <button>Home Page</button>
+      </Link>
     </>
   );
 };
