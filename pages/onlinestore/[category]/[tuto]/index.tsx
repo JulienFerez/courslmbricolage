@@ -46,9 +46,17 @@ const category = ({ tutoString, slug }) => {
                     <ReactPlayer url={element.urlvideo} />
                   </div>
                   <div className="ContainerTutoButton">
-                    <button>Page Précédente</button>
-                    <button>Retour aux catégories</button>
-                    <button>Home Page</button>
+                    <Link href={`/onlinestore/${slug.category}/`}>
+                      <button>Retour aux différents cours</button>
+                    </Link>
+
+                    <Link href="/onlinestore">
+                      <button>Retour aux différents rayon</button>
+                    </Link>
+
+                    <Link href="/">
+                      <button>Home Page</button>
+                    </Link>
                   </div>
                 </div>
               </div>
