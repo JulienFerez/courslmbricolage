@@ -28,5 +28,5 @@ export default async function handler(
     class: [],
   });
 
-  res.redirect("/", 302);
+  res.redirect("/store", 302);
 }
