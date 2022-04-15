@@ -24,15 +24,13 @@ const Layout = ({ user, children }): any => {
             </Link>
           </div>
           <div>Welcome {user?.name}</div>
-          <Link href="/" passHref={true}>
-            <button>Home</button>
-          </Link>
-          <Link href="/store" passHref={true}>
-            <button>Mon magasin</button>
-          </Link>
-          <Link href="/profil" passHref={true}>
-            <button>Mon Profil</button>
-          </Link>
+
+          {user ? (
+            <Link href="/profil" passHref={true}>
+              <button>Mon Profil</button>
+            </Link>
+          ) : null}
+
           {user ? (
             <Link href="/api/auth/logout" passHref={true}>
               <button>Se déconnecter</button>

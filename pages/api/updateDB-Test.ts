@@ -12,7 +12,7 @@ export default async function handler(
   const mongodb = await getDatabase();
 
   const getArray = await mongodb
-    .collection("test")
+    .collection("category")
     .find({ name: req.query.category })
     .toArray();
 
@@ -20,10 +20,11 @@ export default async function handler(
   const modifiedArray = category[0].cours;
   modifiedArray[index].creneaux.push({
     id_prof: "prof@t.com",
-    date: req.query.date,
+    day: req.query.date,
+    hours: "egshsgfds",
   });
 
-  const user = await mongodb.collection("test").updateOne(
+  const user = await mongodb.collection("category").updateOne(
     { name: req.query.category },
     {
       $set: {

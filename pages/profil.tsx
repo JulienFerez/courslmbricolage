@@ -80,8 +80,22 @@ export default function Profile({ users }) {
             <p>{users.adress}</p>
             <p>{users.city}</p>
             <p>{users.tel}</p>
-            <h4>Mes prochains cours</h4>
+            <h4>Cours à donner</h4>
+
             {users.class.map((item: any) => {
+              console.log(item);
+              return (
+                <div>
+                  <p>{item.id_prof}</p>
+                  <p>{item.day}</p>
+                  <p>{item.hours}</p>
+                </div>
+              );
+            })}
+
+            <h4>Mes prochains cours</h4>
+
+            {users.classBuy.map((item: any) => {
               console.log(item);
               return (
                 <div>
