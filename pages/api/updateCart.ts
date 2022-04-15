@@ -27,6 +27,15 @@ export default async function handler(
     .find({ email: dataParse.email })
     .toArray();
 
+  console.log("dataparse", dataParse);
+  const cart = users[0];
+  cart.class.push(dataParse);
+  console.log("users", users);
+
+  const newClass = await mongodb
+    .collection("users")
+    .updateOne({ email: dataParse.email }, { $set: { class: cart.class } });
+
   console.log(users);
   res.redirect("/cartStore", 302);
 }
