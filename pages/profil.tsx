@@ -4,6 +4,7 @@ import { getSession } from "@auth0/nextjs-auth0";
 import { GetServerSideProps } from "next";
 import { getDatabase } from "../src/database";
 import Layout from "../components/Layout";
+import Link from "next/link";
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,
@@ -81,6 +82,10 @@ export default function Profile({ users }) {
             <p>{users.city}</p>
             <p>{users.tel}</p>
             <h4>Cours à donner</h4>
+
+            <Link href="/createClass">
+              <button>Ajouter un cours</button>
+            </Link>
 
             {users.class.map((item: any) => {
               console.log(item);
