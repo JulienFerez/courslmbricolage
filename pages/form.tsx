@@ -23,6 +23,8 @@ export const getServerSideProps: GetServerSideProps = async ({
     },
   };
 };
+// export default withPageAuthRequired(function Profile({ user, category }) {
+//   return (
 
 const Form: React.FC<{ users: any; email: string }> = ({ users, email }) => {
   const [firstName, setFirstName] = React.useState("");

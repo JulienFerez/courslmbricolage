@@ -1,14 +1,13 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import Layout from "../components/Layout";
 import PhoneIcon from "@mui/icons-material/Phone";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import MailIcon from "@mui/icons-material/Mail";
 import Image from "next/image";
 
-const contact = () => {
+const contact = ({ user }) => {
   return (
-    <>
-      <Navbar user={undefined} />
+    <Layout user={user}>
       <h1>Assistance technique</h1>
       <h3>Notre réseau dexperts à votre service</h3>
 
@@ -38,7 +37,7 @@ const contact = () => {
           </p>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

@@ -1,11 +1,10 @@
 import React from "react";
-import Navbar from "../../../../components/Navbar";
+import Layout from "../../../../components/Layout";
 import { GetServerSideProps } from "next";
 import { getDatabase } from "../../../../src/database";
 import ReactPlayer from "react-player";
-
-import Image from "next/image";
 import Link from "next/link";
+import { useUser } from "@auth0/nextjs-auth0";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const slug = context.params;
@@ -28,10 +27,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 const category = ({ tutoString, slug }) => {
-  console.log("tutoString--------------------", tutoString);
+  const { user, error, isLoading } = useUser();
   return (
-    <>
-      <Navbar user={undefined} />
+    <Layout user={user}>
       <div>
         {tutoString[0].tutotest.map((element: any) => {
           if (element.title === slug.tuto) {
@@ -66,7 +64,7 @@ const category = ({ tutoString, slug }) => {
           }
         })}
       </div>
-    </>
+    </Layout>
   );
 };
 

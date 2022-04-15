@@ -1,18 +1,14 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
+import Layout from "../../components/Layout";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
-import Image from "next/image";
 import Link from "next/link";
-import { UserProvider, useUser } from "@auth0/nextjs-auth0";
 import { getDatabase } from "../../src/database";
 import { GetServerSideProps } from "next";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const mongodb = await getDatabase();
   const category = await mongodb.collection("category").find().toArray();
   const categoryString = await JSON.parse(JSON.stringify(category));
-
-  // console.log(categoryString);
 
   return {
     props: {
@@ -23,8 +19,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 export default withPageAuthRequired(function Profile({ user, category }) {
   return (
-    <>
-      <Navbar user={user} />
+    <Layout user={user}>
       <div className="containerCategory">
         {category.map((element: any) => {
           // console.log(element);
@@ -46,6 +41,6 @@ export default withPageAuthRequired(function Profile({ user, category }) {
           );
         })}
       </div>
-    </>
+    </Layout>
   );
 });

@@ -11,7 +11,10 @@ export const getServerSideProps: GetServerSideProps = async ({}: any) => {
     .toArray();
   const dispo = await JSON.parse(JSON.stringify(responseDispo));
 
-  const responseCategory = await mongodb.collection("test").find().toArray();
+  const responseCategory = await mongodb
+    .collection("category")
+    .find()
+    .toArray();
   const category = await JSON.parse(JSON.stringify(responseCategory));
 
   return {
@@ -86,11 +89,11 @@ const CreateClass: NextPage<{ dispo: any; category: any }> = ({
               return element.cours.map((element: any, index: number) => {
                 return (
                   <option
-                    value={`${index}${element.nom}`}
+                    value={`${index}${element.title}`}
                     key={index}
                     id={`index ${index}`}
                   >
-                    {element.nom}
+                    {element.title}
                   </option>
                 );
               });

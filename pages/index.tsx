@@ -1,17 +1,13 @@
-import { UserProvider, useUser } from "@auth0/nextjs-auth0";
-import Head from "next/head";
+import { useUser } from "@auth0/nextjs-auth0";
 import Image from "next/image";
 import Link from "next/link";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-import styles from "../styles/Home.module.css";
+import Layout from "../components/Layout";
 
-export default function Home({ children }): any {
+export default function Home(): any {
   const { user, error, isLoading } = useUser();
   if (user) {
     return (
-      <>
-        <Navbar user={user} />
+      <Layout user={user}>
         <Image
           src="/images/homePage.png"
           alt="homePage.png"
@@ -56,14 +52,12 @@ export default function Home({ children }): any {
             />
           </Link>
         </div>
-        <Footer />
-      </>
+      </Layout>
     );
   } else {
     return (
-      <>
+      <Layout user={undefined}>
         <div className="containerHomePage">
-          <Navbar user={undefined} />
           <Image
             src="/images/homePage.png"
             alt="homePage.png"
@@ -97,7 +91,7 @@ export default function Home({ children }): any {
             </div>
           </Link>
           {/*pour acceder aux cours   */}
-          <Link href="/form" passHref={true}>
+          <Link href="api/auth/login" passHref={true}>
             <div>
               <Image
                 width={500}
@@ -121,8 +115,7 @@ export default function Home({ children }): any {
             </div>
           </Link>
         </div>
-        <Footer />
-      </>
+      </Layout>
     );
   }
 }
