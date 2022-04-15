@@ -72,7 +72,7 @@ export default withPageAuthRequired(function Profile({
                   </div>
                 </div>
 
-                <div className="ContainerTutoDescription">{element.prix}</div>
+                <div className="ContainerTutoDescription">{element.prix} €</div>
                 <div className="ContainerTutoButton">
                   <Link href={`/store/${slug.store_slug}`} passHref={true}>
                     <button>Page Précédente</button>

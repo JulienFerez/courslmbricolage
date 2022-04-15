@@ -104,7 +104,7 @@ const CreateClass: NextPage<{ dispo: any; category: any }> = ({
         {/* conditions pour afficher le bouton  */}
         {dispos !== "null" && categories !== "null" && classes !== "null" ? (
           <Link
-            href={`/api/updateDB-Test?date=${dispos}&category=${categories}&class=${classes}`}
+            href={`/api/createClass?date=${dispos}&category=${categories}&class=${classes}`}
           >
             Valider
           </Link>
