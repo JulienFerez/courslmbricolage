@@ -29,7 +29,6 @@ export const getServerSideProps: GetServerSideProps = async ({
   return {
     props: {
       users: usersString[0],
-      email: email,
     },
   };
 };
@@ -65,6 +64,24 @@ export default function Profile({ users }) {
                 </div>
               );
             })}
+            {users.wishTeacher ? null : (
+              <div>
+                <h4>Demander à devenir professeur</h4>
+                <form method="POST" action="api/updateWishTeacher">
+                  <div>
+                    <input
+                      type="radio"
+                      name="demande professeur"
+                      value={"oui"}
+                    ></input>
+                    Je souhaite devenir professeur
+                  </div>
+                  <Link href={`api/updateWishTeacher?email=${user.email}`}>
+                    <input type="submit" value="Envoyer" />
+                  </Link>
+                </form>
+              </div>
+            )}
           </div>
         </div>
       </Layout>
