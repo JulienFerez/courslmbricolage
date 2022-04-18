@@ -15,16 +15,13 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   const mongodb = await getDatabase();
 
-  // const usersResponse = await mongodb.collection("users").find().toArray();
-  // const users = await JSON.parse(JSON.stringify(usersResponse));
-
   const users = await mongodb
     .collection("users")
     .find({ email: email })
     .toArray();
 
   const usersString = await JSON.parse(JSON.stringify(users));
-  console.log("usersString", usersString);
+  // console.log("usersString", usersString);
 
   return {
     props: {
@@ -36,11 +33,14 @@ export const getServerSideProps: GetServerSideProps = async ({
 // user = user de useUser() ---- userS avec s correspond à la clé nommé users dans props
 
 export default function Profile({ users }) {
+  const [motivation, setMotivation] = React.useState("");
+  const [clique, setClique] = React.useState(false);
+
   const { user, error, isLoading } = useUser();
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
-  console.log("-----users", users);
+  // console.log("-----users", users);
   if (!users.prof) {
     return (
       <Layout user={user}>
@@ -64,7 +64,7 @@ export default function Profile({ users }) {
                 </div>
               );
             })}
-            {users.wishTeacher ? null : (
+            {users.wishTeacher.demand ? null : (
               <div>
                 <h4>Demander à devenir professeur</h4>
                 <form method="POST" action="api/updateWishTeacher">
@@ -73,12 +73,26 @@ export default function Profile({ users }) {
                       type="radio"
                       name="demande professeur"
                       value={"oui"}
-                    ></input>
+                      onClick={() => {
+                        setClique(true);
+                      }}
+                    ></input>{" "}
                     Je souhaite devenir professeur
                   </div>
-                  <Link href={`api/updateWishTeacher?email=${user.email}`}>
-                    <input type="submit" value="Envoyer" />
-                  </Link>
+                  <label htmlFor="firstName">Ecris ta motivation : </label>
+                  <input
+                    type="text"
+                    name="tel"
+                    required
+                    onChange={(e) => setMotivation(e.target.value)}
+                  />
+                  {motivation !== "" && clique === true ? (
+                    <Link
+                      href={`api/updateWishTeacher?email=${user.email}&motivation=${motivation}`}
+                    >
+                      <input type="submit" value="Envoyer" />
+                    </Link>
+                  ) : null}
                 </form>
               </div>
             )}
@@ -133,3 +147,20 @@ export default function Profile({ users }) {
     );
   }
 }
+
+// <div>
+// <input
+//   type="radio"
+//   name="demande professeur"
+//   value={"oui"}
+// ></input>
+// Je souhaite devenir professeur
+// </div>
+
+// </form>
+// {console.log(motivation)}
+// <Link
+// href={`api/updateWishTeacher?email=${user.email}&motivation=${motivation}`}
+// >
+// <input type="submit" value="Envoyer" />
+// </Link>
