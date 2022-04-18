@@ -24,6 +24,7 @@ export default async function handler(
     tel: req.query.tel,
     admin: false,
     prof: false,
+    wishTeacher: false,
     panier: [],
     classBuy: [],
     class: [],
