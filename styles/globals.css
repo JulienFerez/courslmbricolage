@@ -18,11 +18,12 @@ a {
 .container {
   display: flex;
   padding-bottom: 2rem;
+  justify-content: center;
 }
 
 .Element {
   padding: 2rem;
-  margin: auto;
+
 }
 
 .containerHomePage {
@@ -86,3 +87,17 @@ tfoot {
   border: solid;
   margin-bottom: 4rem;
 }
+
+/* CSS page contact */
+.containerContact {
+  text-align: center;
+}
+
+.underline {
+  display: block;
+  width: 30%;
+  height: 2px;
+  background-color:#0c6838;
+  margin: auto;
+}
+
