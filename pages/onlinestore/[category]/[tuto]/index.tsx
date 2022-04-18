@@ -60,7 +60,7 @@ const category = ({ tutoString, slug }) => {
               </div>
             );
           } else {
-            <>toto</>;
+            null;
           }
         })}
       </div>
