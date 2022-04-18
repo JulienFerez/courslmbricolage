@@ -1,10 +1,45 @@
-import { useUser } from "@auth0/nextjs-auth0";
+import { getSession, useUser } from "@auth0/nextjs-auth0";
+import { GetServerSideProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Layout from "../components/Layout";
+import { getDatabase } from "../src/database";
 
-export default function Home(): any {
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  res,
+}: any) => {
+  const session = getSession(req, res);
+  const email = session?.user.email;
+
+  const mongodb = await getDatabase();
+
+  const allUsers = await mongodb
+    .collection("users")
+    .find({ email: email })
+    .toArray();
+
+  const users = await JSON.parse(JSON.stringify(allUsers));
+  // console.log(users[0]._id);
+
+  if (users[0]?._id !== undefined) {
+    console.log("existe");
+  } else {
+    console.log("n'existe pas '");
+  }
+
+  return {
+    props: {
+      users: users,
+    },
+  };
+};
+
+export default function Home({ users }): any {
   const { user, error, isLoading } = useUser();
+  // console.log(users);
+
+  // si l'utilisateur est connecté
   if (user) {
     return (
       <Layout user={user}>
@@ -31,17 +66,32 @@ export default function Home(): any {
               alt="tutoenligne"
             />
           </Link>
-          {/* <h5>Tutos en ligne</h5> */}
-          <Link href="/form" passHref={true}>
-            <Image
-              width={500}
-              height={500}
-              src="/images/coursenmag.png"
-              alt="coursenmag"
-            />
-          </Link>
+
+
+          {users[0]?._id !== undefined ? (
+            <Link href="/store" passHref={true}>
+              <Image
+                width={200}
+                height={200}
+                src="/images/coursenmag.png"
+                alt="coursenmag"
+              />
+            </Link>
+          ) : (
+            <Link href="/form" passHref={true}>
+              <Image
+                width={200}
+                height={200}
+                src="/images/coursenmag.png"
+                alt="coursenmag"
+              />
+            </Link>
+          )}
+
+
         </div>
         <div className="containerContact">
+
           <Link href="/contact" passHref={true}>
             <button className="boutonIndex">Notre assistance technique</button>
           </Link>
@@ -49,6 +99,8 @@ export default function Home(): any {
       </Layout>
     );
   } else {
+    // si l'utilisateur n'est pas connecté
+
     return (
       <Layout user={undefined}>
         <div className="containerHomePage">
@@ -90,9 +142,11 @@ export default function Home(): any {
               <h4>Nos cours en magasin</h4>
             </div>
           </Link>
+
         </div>
         {/* pour acceder page contact  */}
         <div className="containerContact">
+
           <Link href="/contact" passHref={true}>
             <button className="boutonIndex">Notre assistance technique</button>
           </Link>
@@ -101,3 +155,30 @@ export default function Home(): any {
     );
   }
 }
+
+// {user ? (
+//   <Link href="/store" passHref={true}>
+//     <div>
+//       <h1>USERRSSSSSSSSS</h1>
+//       <Image
+//         width={500}
+//         height={500}
+//         src="/images/coursenmag.png"
+//         alt="coursenmag.png"
+//       />
+//       <h4>Nos cours en magasin</h4>
+//     </div>
+//   </Link>
+// ) : (
+// <Link href="api/auth/login" passHref={true}>
+//   <div>
+//     <Image
+//       width={500}
+//       height={500}
+//       src="/images/coursenmag.png"
+//       alt="coursenmag.png"
+//     />
+//     <h4>Nos cours en magasin</h4>
+//   </div>
+// </Link>
+// )}
