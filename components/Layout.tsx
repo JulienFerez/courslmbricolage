@@ -18,7 +18,7 @@ const Layout = ({ user, children }): any => {
               <a>
                 <img
                   className="logo"
-                  src="/images/logoLM.png"
+                  src="/images/LogoLM.png"
                   alt="logo leroy merlin"
                 />
               </a>
