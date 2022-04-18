@@ -8,48 +8,42 @@ export default function Home(): any {
   if (user) {
     return (
       <Layout user={user}>
-        <Image
-          src="/images/homePage.png"
-          alt="homePage.png"
-          width={2000}
-          height={500}
-        />
-        <h2>Tutos</h2>
-        <p>
-          Vous souhaitez peindre vos murs, poser un mitigeur, rénover ou poser
-          un parquet, créer un objet par vous-même ? Vous hésitez à vous lancer
-          ? Apprenez comme vous voulez et quand vous voulez : tutos et vidéos en
-          ligne, cours en magasin, astuces et conseils DIY, coaching avec un pro
-          ou un bricoleur averti… vous avez tout pour réaliser vous-même vos
-          travaux.
-        </p>
+        <div className="containerHomePage">
+          <h2>Tutos</h2>
+          <p>
+            Vous souhaitez peindre vos murs, poser un mitigeur, rénover ou poser
+            un parquet, créer un objet par vous-même ? Vous hésitez à vous
+            lancer ? Apprenez comme vous voulez et quand vous voulez : tutos et
+            vidéos en ligne, cours en magasin, astuces et conseils DIY, coaching
+            avec un pro ou un bricoleur averti… vous avez tout pour réaliser
+            vous-même vos travaux.
+          </p>
 
-        <h1>Toutes les solutions pour apprendre à votre rythme</h1>
-        <div>
+          <h1>Toutes les solutions pour apprendre à votre rythme</h1>
+        </div>
+
+        <div className="container">
           <Link href="/onlinestore" passHref={true}>
             <Image
-              width={200}
-              height={200}
-              src="/images/tutoEnLigne.png"
+              width={500}
+              height={500}
+              src="/images/tutoOnline.jpg"
               alt="tutoenligne"
             />
           </Link>
           {/* <h5>Tutos en ligne</h5> */}
           <Link href="/form" passHref={true}>
             <Image
-              width={200}
-              height={200}
+              width={500}
+              height={500}
               src="/images/coursenmag.png"
               alt="coursenmag"
             />
           </Link>
+        </div>
+        <div className="containerContact">
           <Link href="/contact" passHref={true}>
-            <Image
-              width={200}
-              height={200}
-              src="/images/assistance.png"
-              alt="assistancetel"
-            />
+            <button className="boutonIndex">Notre assistance technique</button>
           </Link>
         </div>
       </Layout>
@@ -58,13 +52,6 @@ export default function Home(): any {
     return (
       <Layout user={undefined}>
         <div className="containerHomePage">
-          <Image
-            src="/images/homePage.png"
-            alt="homePage.png"
-            width={800}
-            height={300}
-          />
-
           <h2>Tutos</h2>
           <p>
             Vous souhaitez peindre vos murs, poser un mitigeur, rénover ou poser
@@ -81,10 +68,11 @@ export default function Home(): any {
           {/* pour acceder aux tutos */}
           <Link href="/onlinestore" passHref={true}>
             <div>
+              {" "}
               <Image
                 width={500}
                 height={500}
-                src="/images/tutoEnLigne.png"
+                src="/images/tutoOnline.jpg"
                 alt="tutoenligne"
               />
               <h4>Nos tutos de bricolage en ligne</h4>
@@ -102,17 +90,11 @@ export default function Home(): any {
               <h4>Nos cours en magasin</h4>
             </div>
           </Link>
-          {/* pour acceder page contact  */}
+        </div>
+        {/* pour acceder page contact  */}
+        <div className="containerContact">
           <Link href="/contact" passHref={true}>
-            <div>
-              <Image
-                width={500}
-                height={500}
-                src="/images/assistance.png"
-                alt="assistance.png"
-              />
-              <h4>Notre assistance technique</h4>
-            </div>
+            <button className="boutonIndex">Notre assistance technique</button>
           </Link>
         </div>
       </Layout>

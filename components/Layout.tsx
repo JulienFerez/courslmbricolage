@@ -12,7 +12,7 @@ const Layout = ({ user, children }): any => {
       </Head>
 
       <nav>
-        <div className="container navBar">
+        <div className="navBar">
           <div>
             <Link href="/">
               <a>

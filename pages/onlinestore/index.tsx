@@ -26,31 +26,34 @@ const onlineStore = ({ category }) => {
 
   return (
     <Layout user={user}>
-      <div className="containerCategory">
-        {category.map((element: any) => {
-          console.log(element);
-          return (
-            <Link
-              href={`/onlinestore/${element.name}`}
-              key="{element.name}"
-              passHref={true}
-            >
-              <div className="elementCategory" key={element.name}>
-                {element.name}
-                <br />
-                <br />
-                <div>
-                  <img
-                    width={100}
-                    height={100}
-                    src={element.image}
-                    alt="toto"
-                  />
+      <div className="containerElementCategory">
+        <div className="containerCategory">
+          {category.map((element: any) => {
+            console.log(element);
+            return (
+              <Link
+                href={`/onlinestore/${element.name}`}
+                key="{element.name}"
+                passHref={true}
+              >
+                <div className="elementCategory" key={element.name}>
+                  {element.name}
+
+                  <span className="underline"></span>
+
+                  <div>
+                    <img
+                      width={100}
+                      height={100}
+                      src={element.image}
+                      alt="toto"
+                    />
+                  </div>
                 </div>
-              </div>
-            </Link>
-          );
-        })}
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </Layout>
   );
