@@ -1,11 +1,4 @@
 import { getDatabase } from "../../src/database";
-import { GetServerSideProps } from "next";
-import { UserProvider, useUser } from "@auth0/nextjs-auth0";
-
-import ReactPlayer from "react-player";
-
-import Image from "next/image";
-import Link from "next/link";
 
 export default async function handler(
   req: {

@@ -42,12 +42,6 @@ const Form: React.FC<{ users: any; email: string }> = ({ users, email }) => {
     }
   }
 
-  // users.map((element: any) => {
-  //   if (element.email === email) {
-  //     setUserExist(true);
-  //   }
-  // });
-
   if (stateTest === true) {
     return (
       <div>
