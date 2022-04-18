@@ -2,6 +2,7 @@ import { getSession, useUser } from "@auth0/nextjs-auth0";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
 import React from "react";
+import Layout from "../components/Layout";
 import { getDatabase } from "../src/database";
 
 export const getServerSideProps: GetServerSideProps = async ({
@@ -45,9 +46,18 @@ const Form: React.FC<{ users: any; email: string }> = ({ users, email }) => {
   if (stateTest === true) {
     return (
       <div>
-        <a href="/store">
-          <button>go to store</button>
-        </a>
+        <Layout user={users}>
+          <br />
+          <Link href="/store">
+            <a className="buttonRedirectForm">
+              <h3>
+                Bienvenue sur notre site de réservation de cours en ligne,
+                cliquez ici pour découvrir tous les univers disponibles
+              </h3>
+            </a>
+          </Link>
+          <br />
+        </Layout>
       </div>
     );
   } else {

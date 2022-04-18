@@ -12,13 +12,13 @@ const Layout = ({ user, children }): any => {
       </Head>
 
       <nav>
-        <div className="container navBar">
+        <div className="navBar">
           <div>
             <Link href="/">
               <a>
                 <img
                   className="logo"
-                  src="/images/logoLM.png"
+                  src="/images/LogoLM.png"
                   alt="logo leroy merlin"
                 />
               </a>

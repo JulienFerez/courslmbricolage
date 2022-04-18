@@ -5,17 +5,18 @@ import StorefrontIcon from "@mui/icons-material/Storefront";
 import MailIcon from "@mui/icons-material/Mail";
 import Image from "next/image";
 
-const contact = ({ user }) => {
+const contact = ({ user}) => {
   return (
     <Layout user={user}>
+      <div className="containerContact"> 
       <h1>Assistance technique</h1>
-      <h3>Notre réseau dexperts à votre service</h3>
-
+      <span className="underline"></span><h3>Un problème, une question ? Contacter nos experts</h3>
+  
       <Image
-        width={500}
+        width={800}
         height={500}
-        src="/images/pageAssistance.jpeg"
-        alt="pageAssistance.jpeg"
+        src="/images/assistanceTechnique.jpg"
+        alt="pageAssistance.jpg"
       />
       <div className="container">
         <div className="Element">
@@ -24,17 +25,13 @@ const contact = ({ user }) => {
           <p>Appelez-nous au 0810 634 634</p>
         </div>
         <div className="Element">
-          <StorefrontIcon />
-          <h5>Notre Magasin</h5>
-          <p>Plan et horaire</p>
-        </div>
-        <div className="Element">
           <MailIcon />
           <h5>Email</h5>
           <p>
             Envoyez-nous votre question <br />
-            Accéder au formulaire
+            campus@leroymerlin.fr
           </p>
+        </div>
         </div>
       </div>
     </Layout>

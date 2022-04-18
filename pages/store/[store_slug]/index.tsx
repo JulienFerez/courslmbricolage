@@ -53,6 +53,7 @@ export default withPageAuthRequired(function Profile({
           );
         })}
       </div>
+      <br />
     </Layout>
   );
 });
