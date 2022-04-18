@@ -110,3 +110,18 @@ footer > div p {
     text-align: center;
   }
 }
+
+.buttonRedirectForm {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-decoration: underline;
+}
+
+.buttonRedirectForm > div {
+  margin-right: 2rem;
+}
+
+.buttonRedirectForm a {
+  margin: 0 0.5rem;
+}
