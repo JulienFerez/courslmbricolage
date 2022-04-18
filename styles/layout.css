@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+/* 1rem = 16px */
+
+/* Navbar */
+.navBar {
+  padding: 1rem 10vw;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Roboto", sans-serif;
+}
+
+.navBar .logo {
+  height: 4rem;
+}
+
+.navButtons {
+  display: flex;
+  align-items: center;
+}
+
+.navButtons > div {
+  margin-right: 2rem;
+}
+
+.navButtons a {
+  margin: 0 0.5rem;
+}
+
+/* bannière */
+
+.banner {
+  text-align: center;
+  background-image: url(../public/images/backgroundNav.jpg);
+  background-size: 20%;
+  padding: 6rem 0;
+}
+
+.banner .underline {
+  display: block;
+  margin: auto;
+  width: 40%;
+  height: 2px;
+  background-color: #0c6838;
+}
+
+/* Footer */
+
+footer {
+  background-color: #0c6838;
+  padding: 1rem 0;
+  color: white;
+}
+
+footer > div p {
+  font-weight: bold;
+}
+
+.flexFooter {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.flexFooter ul {
+  padding: 0;
+}
+
+.flexFooter ul li {
+  list-style: none;
+}
+
+.footerRS ul li {
+  display: inline;
+  margin: 0 0.5rem;
+}
+
+.footerRS .footerLogo {
+  width: 2.5rem;
+}
+
+.copyright {
+  background-color: #0c6838d5;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 1rem 0;
+  color: white;
+}
+
+@media (max-width: 850px) {
+  .navBar {
+    display: block;
+    text-align: center;
+  }
+
+  .navButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .navButtons > div {
+    margin-right: 0;
+  }
+
+  .flexFooter {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+}
