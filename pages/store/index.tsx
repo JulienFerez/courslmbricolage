@@ -41,6 +41,7 @@ export default withPageAuthRequired(function Profile({ user, category }) {
           );
         })}
       </div>
+      <br />
     </Layout>
   );
 });
