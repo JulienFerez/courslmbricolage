@@ -39,6 +39,7 @@ export default withPageAuthRequired(function Profile({
               <Link href={`/store/${slug.store_slug}/${element.title}`}>
                 <div className="">
                   <h4>{element.title}</h4>
+                  <span className="underline"></span>
                   <div className="containerListImage">
                     <img
                       src={element.image}
@@ -53,7 +54,15 @@ export default withPageAuthRequired(function Profile({
           );
         })}
       </div>
-      <br />
+      <div className="bouton">
+        <Link href="/onlinestore">
+          <a>
+            <button className="boutonIndex">
+              Retour aux différents cours magasin
+            </button>
+          </a>
+        </Link>
+      </div>
     </Layout>
   );
 });
