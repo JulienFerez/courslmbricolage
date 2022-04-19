@@ -62,60 +62,62 @@ const Form: React.FC<{ users: any; email: string }> = ({ users, email }) => {
     );
   } else {
     return (
-      <>
-        <form>
-          <div>
-            <label htmlFor="firstName">Enter your firstName: </label>
-            <input
-              type="text"
-              name="firstName"
-              required
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="lastName">Enter your lastName: </label>
-            <input
-              type="text"
-              name="lastName"
-              required
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="adress">Enter your adress: </label>
-            <input
-              type="text"
-              name="adress"
-              required
-              onChange={(e) => setAdress(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="city">Enter your city: </label>
-            <input
-              type="text"
-              name="city"
-              required
-              onChange={(e) => setCity(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="tel">Enter your tel: </label>
-            <input
-              type="text"
-              name="tel"
-              required
-              onChange={(e) => setTel(e.target.value)}
-            />
-          </div>
-        </form>
-        <Link
-          href={`/api/createUser?firstName=${firstName}&email=${email}&lastName=${lastName}&adress=${adress}&city=${city}&tel=${tel}`}
-        >
-          <a>submit</a>
-        </Link>
-      </>
+      <Layout user={users}>
+        <>
+          <form className="formForForm">
+            <div>
+              <input
+                type="text"
+                name="firstName"
+                placeholder="Prénom"
+                required
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Nom"
+                required
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                name="adress"
+                placeholder="Adresse"
+                required
+                onChange={(e) => setAdress(e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                name="city"
+                placeholder="Ville"
+                required
+                onChange={(e) => setCity(e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                name="tel"
+                placeholder="Téléphone"
+                required
+                onChange={(e) => setTel(e.target.value)}
+              />
+            </div>
+          </form>
+          <Link
+            href={`/api/createUser?firstName=${firstName}&email=${email}&lastName=${lastName}&adress=${adress}&city=${city}&tel=${tel}`}
+          >
+            <a className="buttonSubmitForm">Envoyer</a>
+          </Link>
+        </>
+      </Layout>
     );
   }
 };

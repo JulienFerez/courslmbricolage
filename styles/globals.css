@@ -186,19 +186,19 @@ tfoot {
 /* CSS page online Category */
 
 .containerList {
-  display:flex;
+  display: flex;
   text-align: center;
   flex-wrap: wrap;
-  justify-content:space-around;
-  padding: 2rem ; 
+  justify-content: space-around;
+  padding: 2rem;
 }
 
 .containerListImage {
-  text-align:center;
+  text-align: center;
 }
 .containerListElement {
- padding: 2rem;
- max-width: 25rem;
+  padding: 2rem;
+  max-width: 25rem;
 }
 
 .containerListElement:hover {
@@ -209,7 +209,7 @@ tfoot {
 .bouton {
   margin: 5rem;
   display: flex;
-  justify-content:center;
+  justify-content: center;
 }
 .bouton .boutonIndex {
   border: 2px solid #0c6838;
@@ -224,4 +224,50 @@ tfoot {
   color: white;
   background-color: #0c6838;
   cursor: pointer;
+}
+
+/* CSS pour form  */
+
+.formForForm {
+  text-align: center;
+  margin: 4rem 0 2rem 0;
+}
+
+.buttonSubmitForm {
+  display: block;
+  margin: auto;
+  text-align: center;
+  border: 2px solid #0c6838;
+  background-color: white;
+  padding: 1rem 3rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  color: #0c6838;
+  width: 30%;
+}
+
+.buttonSubmitForm:hover {
+  color: white;
+  background-color: #0c6838;
+  cursor: pointer;
+}
+
+.formForForm > div {
+  margin: 1rem 0;
+}
+
+.formForForm > div > input {
+  padding: 0.5rem;
+  width: 30%;
+  border-radius: 5px;
+  border: black solid 1px;
+}
+
+@media (max-width: 850px) {
+  .buttonSubmitForm {
+    width: 60%;
+  }
+  .formForForm > div > input {
+    width: 60%;
+  }
 }
