@@ -39,52 +39,52 @@ export default withPageAuthRequired(function Profile({
           if (element.title === slug.slug_details) {
             return (
               <div>
-                <div className="ContainerTuto" key={element.title}>
-                  <h3>{element.title}</h3>
-                  <div className="ContainerTutoDescription">
-                    {element.description}
-                  </div>
-                  <div className="ContainerTutoDescription">
-                    <img width={200} height={200} src={element.image} />
+                <div className="ContainerCours" key={element.title}>
+                  <div className="ContainerCoursImageDescription">
+                    <div className="image">
+                      <img width={200} height={200} src={element.image} />
+                    </div>
+                    <br />
+                    <span className="underline"></span>
+                    <div className="ContainerCoursDescription">
+                      {element.description}
+                    </div>
                   </div>
 
-                  <div>
+                  <div className="ContainerCoursSlot">
                     <form method="POST" action="/api/updateCart">
+                      <h3>{element.title}</h3>
+                      {element.prix} €<span className="underline"></span>
                       {element.creneaux.map((slot, index) => {
                         return (
-                          <div key={index}>
+                          <div key={index} className="slot">
                             <input
                               type="radio"
                               name="creneau"
                               value={`{"day": "${slot.day}", "hours": "${slot.hours}", "id_prof": "${slot.id_prof}", "email": "${user.email}"}`}
                               onChange={(e) => setForm(slot)}
-                            ></input>
-
-                            {slot.day}
-                            {slot.hours}
-                            {slot.id_prof}
+                            />
+                            {slot.id_prof} &nbsp; &nbsp;
+                            {slot.day} &nbsp; &nbsp; {slot.hours}
                           </div>
                         );
                       })}
-                      <input type="submit" value="Envoyer" />
+                      {/* <div className="boutonSlot"> */}
+                      <input
+                        type="submit"
+                        value="Confirmer"
+                        className="boutonSlot"
+                      />
+                      {/* </div> */}
                     </form>
-                    <button onClick={() => console.log(form)}>Bouton </button>
                   </div>
                 </div>
 
-                <div className="ContainerTutoDescription">{element.prix} €</div>
                 <div className="ContainerTutoButton">
-                  <Link href={`/store/${slug.store_slug}`} passHref={true}>
-                    <button>Page Précédente</button>
-                  </Link>
                   <Link href="/store" passHref={true}>
-                    <button>Retour aux catégories</button>
-                  </Link>
-                  <Link href="/" passHref={true}>
-                    <button>Home Page</button>
-                  </Link>
-                  <Link href="/validation" passHref={true}>
-                    <button>Valider</button>
+                    <button className="boutonIndex">
+                      Retour aux catégories
+                    </button>
                   </Link>
                 </div>
               </div>
