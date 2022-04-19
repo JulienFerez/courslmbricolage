@@ -43,7 +43,7 @@ export default function Profile({ users }) {
   console.log("-----users", users);
 
   return (
-    <Layout user={user}>
+    <Layout user={user} title="Profil">
       <div>
         <div>
           <h4>Récapitulatif Prof</h4>

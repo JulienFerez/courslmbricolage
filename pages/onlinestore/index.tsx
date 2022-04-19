@@ -25,11 +25,10 @@ const onlineStore = ({ category }) => {
   const { user, error, isLoading } = useUser();
 
   return (
-    <Layout user={user}>
+    <Layout user={user} title="Nos tutos en ligne">
       <div className="containerElementCategory">
         <div className="containerCategory">
           {category.map((element: any) => {
-            console.log(element);
             return (
               <Link
                 href={`/onlinestore/${element.name}`}

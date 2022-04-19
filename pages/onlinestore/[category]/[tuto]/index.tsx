@@ -29,14 +29,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const category = ({ tutoString, slug }) => {
   const { user, error, isLoading } = useUser();
   return (
-    <Layout user={user}>
+    <Layout user={user} title={slug.tuto}>
       <div>
         {tutoString[0].tutotest.map((element: any) => {
           if (element.title === slug.tuto) {
             return (
               <div>
                 <div className="ContainerTuto" key={element.title}>
-                  <h3>{element.title}</h3>
                   <div className="ContainerTutoDescription">
                     {element.description}
                   </div>

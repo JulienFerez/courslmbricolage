@@ -42,7 +42,7 @@ export default function Home({ users }): any {
   // si l'utilisateur est connecté
   if (user) {
     return (
-      <Layout user={user}>
+      <Layout user={user} title="Et si vous appreniez à le faire vous même ?">
         <div className="containerHomePage">
           <p>
             Vous souhaitez peindre vos murs, poser un mitigeur, rénover ou poser
@@ -109,7 +109,10 @@ export default function Home({ users }): any {
     // si l'utilisateur n'est pas connecté
 
     return (
-      <Layout user={undefined}>
+      <Layout
+        user={undefined}
+        title="Et si vous appreniez à le faire vous même ?"
+      >
         <div className="containerHomePage">
           <p>
             Vous souhaitez peindre vos murs, poser un mitigeur, rénover ou poser

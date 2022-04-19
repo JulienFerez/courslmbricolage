@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 
-const Layout = ({ user, children }): any => {
+const Layout = ({ user, children, title }): any => {
   return (
     <>
       <Head>
@@ -25,13 +25,13 @@ const Layout = ({ user, children }): any => {
           </div>
           <div className="navButtons">
             <div>
-              <p>Welcome {user?.name}</p>
+              <p>Bonjour, {user?.name}</p>
             </div>
 
             <div>
               {user ? (
                 <Link href="/api/auth/logout" passHref={true}>
-                  <a>Deconnection</a>
+                  <a>Déconnexion</a>
                 </Link>
               ) : (
                 <Link href="/api/auth/login" passHref={true}>
@@ -55,7 +55,7 @@ const Layout = ({ user, children }): any => {
       </nav>
 
       <div className="banner">
-        <h1>titre</h1>
+        <h1>{title}</h1>
         <span className="underline"></span>
       </div>
       <div>{children}</div>

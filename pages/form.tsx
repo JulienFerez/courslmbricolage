@@ -1,4 +1,4 @@
-import { getSession, useUser } from "@auth0/nextjs-auth0";
+import { getSession } from "@auth0/nextjs-auth0";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
 import React from "react";
@@ -46,7 +46,7 @@ const Form: React.FC<{ users: any; email: string }> = ({ users, email }) => {
   if (stateTest === true) {
     return (
       <div>
-        <Layout user={users}>
+        <Layout user={users} title="Formulaire d'inscription">
           <br />
           <Link href="/store">
             <a className="buttonRedirectForm">
@@ -62,7 +62,7 @@ const Form: React.FC<{ users: any; email: string }> = ({ users, email }) => {
     );
   } else {
     return (
-      <Layout user={users}>
+      <Layout user={users} title="Formulaire d'inscription">
         <>
           <form className="formForForm">
             <div>
