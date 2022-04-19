@@ -44,54 +44,61 @@ export default function Home({ users }): any {
     return (
       <Layout user={user}>
         <div className="containerHomePage">
-          <h2>Tutos</h2>
           <p>
             Vous souhaitez peindre vos murs, poser un mitigeur, rénover ou poser
             un parquet, créer un objet par vous-même ? Vous hésitez à vous
             lancer ? Apprenez comme vous voulez et quand vous voulez : tutos et
-            vidéos en ligne, cours en magasin, astuces et conseils DIY, coaching
-            avec un pro ou un bricoleur averti… vous avez tout pour réaliser
-            vous-même vos travaux.
+            vidéos en ligne, cours en magasin, coaching avec un pro ou un
+            bricoleur averti… vous avez tout pour réaliser vous-même vos
+            travaux.
           </p>
 
-          <h1>Toutes les solutions pour apprendre à votre rythme</h1>
+          {/* <h1>Toutes les solutions pour apprendre à votre rythme</h1> */}
         </div>
-
-        <div className="container">
+        {/* Pour accéder aux tutos  */}
+        <div className="imageHomePage">
           <Link href="/onlinestore" passHref={true}>
-            <Image
-              width={500}
-              height={500}
-              src="/images/tutoOnline.jpg"
-              alt="tutoenligne"
-            />
+            <div>
+              <Image
+                className="pictureHomePage"
+                width={300}
+                height={300}
+                src="/images/tutoOnline.jpg"
+                alt="tutoenligne"
+              />
+              <p className="bandeauImageHome">Tuto en ligne</p>
+            </div>
           </Link>
-
-
+          {/* Pour accéder aux cours en magasin  */}
           {users[0]?._id !== undefined ? (
             <Link href="/store" passHref={true}>
-              <Image
-                width={200}
-                height={200}
-                src="/images/coursenmag.png"
-                alt="coursenmag"
-              />
+              <div>
+                <Image
+                  className="pictureHomePage"
+                  width={300}
+                  height={300}
+                  src="/images/coursEnMag.jpg"
+                  alt="coursenmag"
+                />
+                <p className="bandeauImageHome">Cours en magasin</p>
+              </div>
             </Link>
           ) : (
             <Link href="/form" passHref={true}>
-              <Image
-                width={200}
-                height={200}
-                src="/images/coursenmag.png"
-                alt="coursenmag"
-              />
+              <div>
+                <Image
+                  className="pictureHomePage"
+                  width={300}
+                  height={300}
+                  src="/images/coursEnMag.jpg"
+                  alt="coursenmag"
+                />
+                <p className="bandeauImageHome">Cours en magasin</p>
+              </div>
             </Link>
           )}
-
-
         </div>
         <div className="containerContact">
-
           <Link href="/contact" passHref={true}>
             <button className="boutonIndex">Notre assistance technique</button>
           </Link>
@@ -104,49 +111,48 @@ export default function Home({ users }): any {
     return (
       <Layout user={undefined}>
         <div className="containerHomePage">
-          <h2>Tutos</h2>
           <p>
             Vous souhaitez peindre vos murs, poser un mitigeur, rénover ou poser
             un parquet, créer un objet par vous-même ? Vous hésitez à vous
             lancer ? Apprenez comme vous voulez et quand vous voulez : tutos et
-            vidéos en ligne, cours en magasin, astuces et conseils DIY, coaching
-            avec un pro ou un bricoleur averti… vous avez tout pour réaliser
-            vous-même vos travaux.
+            vidéos en ligne, cours en magasin, coaching avec un pro ou un
+            bricoleur averti… vous avez tout pour réaliser vous-même vos
+            travaux.
           </p>
-          <h1>Toutes les solutions pour apprendre à votre rythme</h1>
+          {/* <h1>Toutes les solutions pour apprendre à votre rythme</h1> */}
         </div>
 
-        <div className="container">
+        <div className="imageHomePage">
           {/* pour acceder aux tutos */}
           <Link href="/onlinestore" passHref={true}>
             <div>
               {" "}
               <Image
-                width={500}
-                height={500}
+                className="pictureHomePage"
+                width={300}
+                height={300}
                 src="/images/tutoOnline.jpg"
                 alt="tutoenligne"
               />
-              <h4>Nos tutos de bricolage en ligne</h4>
+              <p className="bandeauImageHome">Tuto en ligne</p>
             </div>
           </Link>
           {/*pour acceder aux cours   */}
           <Link href="api/auth/login" passHref={true}>
             <div>
               <Image
-                width={500}
-                height={500}
-                src="/images/coursenmag.png"
+                className="pictureHomePage"
+                width={300}
+                height={300}
+                src="/images/coursEnMag.jpg"
                 alt="coursenmag.png"
               />
-              <h4>Nos cours en magasin</h4>
+              <p className="bandeauImageHome">Cours en magasin</p>
             </div>
           </Link>
-
         </div>
         {/* pour acceder page contact  */}
         <div className="containerContact">
-
           <Link href="/contact" passHref={true}>
             <button className="boutonIndex">Notre assistance technique</button>
           </Link>

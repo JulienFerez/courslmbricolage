@@ -136,6 +136,53 @@ tfoot {
   cursor: pointer;
 }
 
+/* CSS homePage */
+
+.imageHomePage {
+  display: flex;
+  justify-content: space-evenly;
+  width: 70vw;
+  margin: 3rem auto;
+}
+
+.bandeauImageHome {
+  background-color: #0c6838;
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem 0;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+
+.imageHomePage > div {
+  position: relative;
+  cursor: pointer;
+}
+
+.imageHomePage > div :hover {
+  background-color: #044222;
+}
+
+.containerHomePage > p {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+@media (max-width: 850px) {
+  .imageHomePage {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .imageHomePage > div {
+    width: fit-content;
+    margin: 1rem auto;
+  }
+}
+
 /* CSS page online Category */
 
 .containerList {
