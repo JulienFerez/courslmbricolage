@@ -47,7 +47,7 @@ export default function Profile({ users, allUsers }) {
   // si l'utilisateur est un admin
   if (users.admin) {
     return (
-      <Layout user={user}>
+      <Layout user={user} title="Profil">
         <div>
           <h4>Récapitulatif Utilisateur</h4>
           <p>{users.firstName}</p>
@@ -90,7 +90,7 @@ export default function Profile({ users, allUsers }) {
     // si l'utilisateur est un prof
   } else if (!users.prof) {
     return (
-      <Layout user={user}>
+      <Layout user={user} title="Profil">
         <div>
           <div>
             <h4>Récapitulatif Utilisateur</h4>
@@ -153,7 +153,7 @@ export default function Profile({ users, allUsers }) {
   } else {
     // si l'utilisateur n'est pas un prof
     return (
-      <Layout user={user}>
+      <Layout user={user} title="Profil">
         <div>
           <div>
             <h4>Récapitulatif Prof</h4>

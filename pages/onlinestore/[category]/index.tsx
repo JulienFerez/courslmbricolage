@@ -27,14 +27,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const category = ({ tutoString, slug }) => {
   const { user, error, isLoading } = useUser();
   return (
-    <Layout user={user}>
+    <Layout user={user} title={slug}>
       <div className="containerList">
         {tutoString[0].tutotest.map((element) => {
           return (
             <div className="containerListElement" key={element.title}>
               <Link href={`/onlinestore/${slug}/${element.title}`}>
                 <div className="">
-                  <h4>{element.title}</h4><span className="underline"></span>
+                  <h4>{element.title}</h4>
+                  <span className="underline"></span>
                   <div className="containerListImage">
                     <img
                       src={element.image}
@@ -50,11 +51,11 @@ const category = ({ tutoString, slug }) => {
         })}
       </div>
       <div className="bouton">
-      <Link href="/onlinestore">
-        <a>
-          <button className="boutonIndex">Retour aux différents rayon</button>
-        </a>
-      </Link>
+        <Link href="/onlinestore">
+          <a>
+            <button className="boutonIndex">Retour aux différents rayon</button>
+          </a>
+        </Link>
       </div>
     </Layout>
   );

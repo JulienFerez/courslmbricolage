@@ -33,7 +33,7 @@ export default withPageAuthRequired(function Profile({
   const [form, setForm] = React.useState("");
 
   return (
-    <Layout user={user}>
+    <Layout user={user} title={slug.slug_details}>
       <div>
         {coursString[0].cours.map((element: any) => {
           if (element.title === slug.slug_details) {

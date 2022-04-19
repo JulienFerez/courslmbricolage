@@ -40,10 +40,9 @@ export default function Profile({ users }) {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
-  console.log("-----users", users);
 
   return (
-    <Layout user={user}>
+    <Layout user={user} title="Profil">
       <div>
         <div>
           <h4>Récapitulatif Prof</h4>

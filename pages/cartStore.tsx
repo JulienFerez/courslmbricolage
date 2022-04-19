@@ -31,7 +31,7 @@ export default withPageAuthRequired(function Profile({ panierString, user }) {
   let total: number = 0;
   if (panierString[0].panier.length > 0) {
     return (
-      <Layout user={user}>
+      <Layout user={user} title="Panier">
         <div>
           {panierString[0].panier.map((item: any) => {
             total += Number(item.price);
@@ -77,7 +77,7 @@ export default withPageAuthRequired(function Profile({ panierString, user }) {
     );
   } else {
     return (
-      <Layout user={user}>
+      <Layout user={user} title="Panier">
         <p className="emptyCartP">
           Il semblerait que votre panier soit vide... est-il en construction ?
         </p>
