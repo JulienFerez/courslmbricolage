@@ -26,39 +26,67 @@ export const getServerSideProps: GetServerSideProps = async ({
     },
   };
 };
+
 export default withPageAuthRequired(function Profile({ panierString, user }) {
-  return (
-    <Layout user={user}>
-      <div>
-        {panierString.map((element: any) => {
-          return (
-            <div>
-              <h4>Récapitulatif Utilisateur</h4>
-              <p>{element.firstName}</p>
-              <p>{element.lastName}</p>
-              <p>{element.email}</p>
-              <p>{element.adress}</p>
-              <p>{element.city}</p>
-              <p>{element.tel}</p>
-              <h4>Panier</h4>
-              {console.log({ element })}
-              {element.panier.map((item: any) => {
-                console.log(item);
-                return (
-                  <div>
-                    <p>{item.id_prof}</p>
-                    <p>{item.day}</p>
-                    <p>{item.hours}</p>
-                  </div>
-                );
-              })}
+  let total: number = 0;
+  if (panierString[0].panier.length > 0) {
+    return (
+      <Layout user={user}>
+        <div>
+          {panierString[0].panier.map((item: any) => {
+            total += Number(item.price);
+            return (
+              <div className="cartContainer">
+                <div className="imgCart">
+                  <img src={item.imgURL} alt="Photo du cours" />
+                </div>
+                <div className="pCart">
+                  <h3>{item.title}</h3>
+                  <h4>
+                    {item.day}, {item.hours}
+                  </h4>
+
+                  <p>{item.desc}</p>
+                  <p className="priceCart">{item.price} €</p>
+                </div>
+              </div>
+            );
+          })}
+          <div className="price">
+            <span></span>
+            <h3 className="totalPrice">Prix total : {total} €</h3>
+            <span></span>
+          </div>
+
+          <div className="buttonGrp">
+            <div className="buttonCart">
+              <Link href={`/api/validClassBuy?email=${user.email}`}>
+                <div>
+                  <a>Valider et payer</a>
+                </div>
+              </Link>
             </div>
-          );
-        })}
-        <Link href={`/api/validClassBuy?email=${user.email}`} passHref={true}>
-          Valider et payer
-        </Link>
-      </div>
-    </Layout>
-  );
+            <div className="buttonCart">
+              <Link href="/store">
+                <a>Continuez vos achats</a>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </Layout>
+    );
+  } else {
+    return (
+      <Layout user={user}>
+        <p className="emptyCartP">
+          Il semblerait que votre panier soit vide... est-il en construction ?
+        </p>
+        <div className="buttonCart">
+          <Link href="/store">
+            <a>Découvrez nos offres !</a>
+          </Link>
+        </div>
+      </Layout>
+    );
+  }
 });

@@ -1,9 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 a {
@@ -258,6 +259,113 @@ tfoot {
   }
 }
 
+
+/* Panier */
+
+.buttonGrp {
+  display: flex;
+  justify-content: center;
+}
+
+.buttonCart:first-child {
+  background-color: #0c6838;
+  color: white;
+}
+
+.buttonCart:first-child:hover {
+  background-color: #044222;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in;
+}
+
+.buttonCart {
+  text-align: center;
+  width: fit-content;
+  margin: 2rem 1rem 5rem 1rem;
+  padding: 1rem;
+  border: #0c6838 solid 2px;
+  border-radius: 5px;
+  transition: background-color 0.4s ease-out;
+}
+
+.buttonCart:hover {
+  background-color: rgb(232, 232, 232);
+  cursor: pointer;
+  border: #044222 solid 2px;
+  transition: all 0.3s ease-in;
+}
+
+.emptyCartP {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.cartContainer {
+  display: flex;
+  width: 70vw;
+  margin: 2rem auto;
+  align-items: center;
+  border: #0c6838 solid 1px;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.cartContainer > .pCart {
+  margin-left: 2rem;
+}
+
+.cartContainer > .pCart > h3,
+.cartContainer > .pCart > h4 {
+  margin: 0;
+}
+
+.cartContainer > .pCart > p {
+  text-align: justify;
+}
+
+.cartContainer .imgCart {
+  width: 30%;
+}
+
+.cartContainer .imgCart > img {
+  width: 100%;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.price > span {
+  display: block;
+  width: 20%;
+  height: 2px;
+  background-color: #0c6838;
+  margin: 0 1rem;
+}
+
+.totalPrice {
+  text-align: center;
+}
+
+@media (max-width: 850px) {
+  .cartContainer {
+    flex-direction: column;
+    text-align: center;
+  }
+  .cartContainer .imgCart {
+    width: 60%;
+    margin: 1rem 0;
+  }
+  .cartContainer > .pCart > h3 {
+    margin-bottom: 0.5rem;
+  }
+  .cartContainer > .pCart > .priceCart {
+    text-align: center;
+  }
+}
+
 /* CSS PAGE TUTO */
 
 .ContainerTuto {
@@ -376,5 +484,6 @@ tfoot {
   }
   .ContainerCoursSlot {
     margin-top: 2rem;
+
   }
 }
