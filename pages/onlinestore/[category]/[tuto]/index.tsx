@@ -37,24 +37,29 @@ const category = ({ tutoString, slug }) => {
               <div>
                 <div className="ContainerTuto" key={element.title}>
                   <h3>{element.title}</h3>
-                  <div className="ContainerTutoDescription">
-                    {element.description}
-                  </div>
+                  <span className="underline"></span>
+
                   <div className="ContainerTutoVideo">
                     <ReactPlayer url={element.urlvideo} />
                   </div>
+
+                  <div className="ContainerTutoDescription">
+                    {element.description}
+                  </div>
+
                   <div className="ContainerTutoButton">
-                    <Link href={`/onlinestore/${slug.category}/`}>
-                      <button>Retour aux différents cours</button>
-                    </Link>
-
-                    <Link href="/onlinestore">
-                      <button>Retour aux différents rayon</button>
-                    </Link>
-
-                    <Link href="/">
-                      <button>Home Page</button>
-                    </Link>
+                    <div className="boutonTuto">
+                      <Link href={`/onlinestore/${slug.category}/`}>
+                        <button className="boutonTuto">
+                          Retour aux différents cours
+                        </button>
+                      </Link>
+                      <Link href="/onlinestore">
+                        <button className="boutonTuto">
+                          Retour aux différents rayon
+                        </button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
