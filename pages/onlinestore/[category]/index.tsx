@@ -34,7 +34,7 @@ const category = ({ tutoString, slug }) => {
             <div className="containerListElement" key={element.title}>
               <Link href={`/onlinestore/${slug}/${element.title}`}>
                 <div className="">
-                  <h4>{element.title}</h4>
+                  <h4>{element.title}</h4><span className="underline"></span>
                   <div className="containerListImage">
                     <img
                       src={element.image}
@@ -49,15 +49,13 @@ const category = ({ tutoString, slug }) => {
           );
         })}
       </div>
+      <div className="bouton">
       <Link href="/onlinestore">
         <a>
-          <button>Retour aux différents rayon</button>
+          <button className="boutonIndex">Retour aux différents rayon</button>
         </a>
       </Link>
-
-      <Link href="/">
-        <button>Home Page</button>
-      </Link>
+      </div>
     </Layout>
   );
 };

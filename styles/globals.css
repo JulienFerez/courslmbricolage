@@ -57,10 +57,10 @@ tfoot {
   justify-content: center;
 }
 
-.containerListImage {
+/* .containerListImage {
   margin: auto;
   text-align: center;
-}
+} */
 .slot {
   border: solid;
   margin-bottom: 4rem;
@@ -181,4 +181,47 @@ tfoot {
     width: fit-content;
     margin: 1rem auto;
   }
+}
+
+/* CSS page online Category */
+
+.containerList {
+  display:flex;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content:space-around;
+  padding: 2rem ; 
+}
+
+.containerListImage {
+  text-align:center;
+}
+.containerListElement {
+ padding: 2rem;
+ max-width: 25rem;
+}
+
+.containerListElement:hover {
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.53);
+  cursor: pointer;
+}
+
+.bouton {
+  margin: 5rem;
+  display: flex;
+  justify-content:center;
+}
+.bouton .boutonIndex {
+  border: 2px solid #0c6838;
+  background-color: white;
+  padding: 1rem 3rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  color: #0c6838;
+}
+
+.bouton .boutonIndex:hover {
+  color: white;
+  background-color: #0c6838;
+  cursor: pointer;
 }

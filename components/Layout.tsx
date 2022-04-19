@@ -200,7 +200,7 @@ const Layout = ({ user, children }): any => {
         </div>
       </footer>
       <p className="copyright">
-        Le contenue de ce site est protégé par la loi du copyright et appartient
+        Le contenu de ce site est protégé par la loi du copyright et appartient
         à LeroyMerlin
       </p>
     </>
