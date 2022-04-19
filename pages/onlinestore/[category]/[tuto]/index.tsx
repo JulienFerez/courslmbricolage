@@ -8,7 +8,6 @@ import { useUser } from "@auth0/nextjs-auth0";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const slug = context.params;
-  console.log("slug", slug);
 
   const mongodb = await getDatabase();
 
@@ -29,16 +28,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const category = ({ tutoString, slug }) => {
   const { user, error, isLoading } = useUser();
   return (
-    <Layout user={user}>
+    <Layout user={user} title={slug.tuto}>
       <div>
         {tutoString[0].tutotest.map((element: any) => {
           if (element.title === slug.tuto) {
             return (
               <div>
                 <div className="ContainerTuto" key={element.title}>
-                  <h3>{element.title}</h3>
-                  <span className="underline"></span>
-
                   <div className="ContainerTutoVideo">
                     <ReactPlayer url={element.urlvideo} />
                   </div>

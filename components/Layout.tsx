@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 
-const Layout = ({ user, children }): any => {
+const Layout = ({ user, children, title }): any => {
   return (
     <>
       <Head>
@@ -55,7 +55,7 @@ const Layout = ({ user, children }): any => {
       </nav>
 
       <div className="banner">
-        <h1>titre</h1>
+        <h1>{title}</h1>
         <span className="underline"></span>
       </div>
       <div>{children}</div>

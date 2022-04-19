@@ -19,7 +19,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 export default withPageAuthRequired(function Profile({ user, category }) {
   return (
-    <Layout user={user}>
+    <Layout user={user} title="Nos cours en magasins">
       <div className="containerElementCategory">
         <div className="containerCategory">
           {category.map((element: any) => {
