@@ -20,10 +20,8 @@ export default async function handler(
     .find({ email: dataParse.email })
     .toArray();
 
-  console.log("dataparse", dataParse);
   const cart = users[0];
   cart.panier.push(dataParse);
-  console.log("users", users);
 
   const newClass = await mongodb
     .collection("users")

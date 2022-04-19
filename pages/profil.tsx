@@ -86,6 +86,7 @@ export default function Profile({ users, allUsers }) {
         </div>
       </Layout>
     );
+
     // si l'utilisateur est un prof
   } else if (!users.prof) {
     return (

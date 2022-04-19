@@ -56,7 +56,7 @@ export default withPageAuthRequired(function Profile({
                             <input
                               type="radio"
                               name="creneau"
-                              value={`{"day": "${slot.day}", "hours": "${slot.hours}", "id_prof": "${slot.id_prof}", "email": "${user.email}"}`}
+                              value={`{"day": "${slot.day}", "hours": "${slot.hours}", "id_prof": "${slot.id_prof}", "email": "${user.email}", "title":"${element.title}", "desc":"${element.description}", "imgURL":"${element.image}", "price":"${element.prix}"}`}
                               onChange={(e) => setForm(slot)}
                             ></input>
 
