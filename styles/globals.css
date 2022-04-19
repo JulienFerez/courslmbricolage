@@ -44,20 +44,6 @@ tfoot {
   color: #fff;
 }
 
-.ContainerTuto {
-  text-align: center;
-}
-
-.ContainerTutoDescription {
-  padding-top: 2rem;
-}
-
-.ContainerTutoVideo {
-  display: flex;
-  padding-top: 4rem;
-  justify-content: center;
-}
-
 /* .containerListImage {
   margin: auto;
   text-align: center;
@@ -273,6 +259,7 @@ tfoot {
   }
 }
 
+
 /* Panier */
 
 .buttonGrp {
@@ -376,5 +363,125 @@ tfoot {
   }
   .cartContainer > .pCart > .priceCart {
     text-align: center;
+
+/* CSS PAGE TUTO */
+
+.ContainerTuto {
+  text-align: center;
+}
+
+.ContainerTutoDescription {
+  padding-top: 4rem;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  max-width: 55rem;
+  text-align: center;
+}
+
+.ContainerTutoVideo {
+  display: flex;
+  padding-top: 4rem;
+  justify-content: center;
+}
+.ContainerTutoButton {
+  display: flex;
+  justify-content: space-around;
+}
+
+.boutonTuto {
+  margin: 3rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.boutonTuto .boutonTuto {
+  border: 2px solid #0c6838;
+  background-color: white;
+  padding: 1rem 3rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  color: #0c6838;
+}
+
+.boutonTuto .boutonTuto:hover {
+  color: white;
+  background-color: #0c6838;
+  cursor: pointer;
+}
+
+/* CSS PAGE COURS SLOT */
+
+.ContainerCours {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.ContainerCoursImageDescription {
+  display: flex;
+  flex-direction: column;
+  max-width: 40rem;
+}
+.image {
+  display: flex;
+  justify-content: center;
+}
+.ContainerCoursDescription {
+  max-width: 60rem;
+  padding-top: 2rem;
+  /* padding: 2rem; */
+  text-align: center;
+  justify-content: center;
+}
+.ContainerCoursSlot {
+  border: 2px solid #0c6838;
+  border-radius: 10px;
+  max-width: 40rem;
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
+  transition: box-shadow 0.6s ease-out;
+}
+
+.ContainerCoursSlot:hover {
+  transition: box-shadow 0.5s ease-in;
+  box-shadow: 0 0.7rem 2rem rgba(0, 0, 0, 0.95);
+}
+
+.slot {
+  border: 2px solid #0c6838;
+  padding: 1rem;
+  margin: 2rem;
+  border-radius: 10px;
+}
+
+.boutonSlot {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  border: 2px solid black;
+  background-color: white;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  color: black;
+}
+
+.ContainerTutoButton {
+  padding-top: 3rem;
+}
+
+@media (max-width: 850px) {
+  .ContainerCours {
+    display: flex;
+    flex-direction: column;
+  }
+  .ContainerCoursSlot {
+    margin-top: 2rem;
+
   }
 }
