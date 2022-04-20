@@ -31,7 +31,7 @@
 
 .banner {
   text-align: center;
-  background-image: url(../public/images/backgroundNav.jpg);
+  background-image: url(/images/backgroundNav.jpg);
   background-size: 20%;
   padding: 6rem 0;
 }
