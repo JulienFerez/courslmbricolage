@@ -1,6 +1,7 @@
 import { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
 import React from "react";
+import Layout from "../components/Layout";
 import { getDatabase } from "../src/database";
 
 export const getServerSideProps: GetServerSideProps = async ({}: any) => {
@@ -10,6 +11,9 @@ export const getServerSideProps: GetServerSideProps = async ({}: any) => {
     .find()
     .toArray();
   const dispo = await JSON.parse(JSON.stringify(responseDispo));
+
+  const allUsers = await mongodb.collection("users").find().toArray();
+  const user = await JSON.parse(JSON.stringify(allUsers));
 
   const responseCategory = await mongodb
     .collection("category")
@@ -21,13 +25,15 @@ export const getServerSideProps: GetServerSideProps = async ({}: any) => {
     props: {
       dispo: dispo,
       category: category,
+      user: user,
     },
   };
 };
 
-const CreateClass: NextPage<{ dispo: any; category: any }> = ({
+const CreateClass: NextPage<{ dispo: any; category: any; user: any }> = ({
   dispo,
   category,
+  user,
 }) => {
   const [dispos, setDispos] = React.useState("null");
   const [categories, setCategories] = React.useState("null");
@@ -35,7 +41,7 @@ const CreateClass: NextPage<{ dispo: any; category: any }> = ({
 
   // console.log(category);
   return (
-    <div>
+    <Layout user={user} title="Create Class">
       <main>
         {/* date dispo */}
         <label htmlFor="dispo">Choose a date</label>
@@ -110,7 +116,7 @@ const CreateClass: NextPage<{ dispo: any; category: any }> = ({
           </Link>
         ) : null}
       </main>
-    </div>
+    </Layout>
   );
 };
 export default CreateClass;

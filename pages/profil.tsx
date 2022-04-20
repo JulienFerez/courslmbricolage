@@ -30,24 +30,25 @@ export const getServerSideProps: GetServerSideProps = async ({
     props: {
       users: usersString[0],
       allUsers: allUsers,
+      use: usersString,
     },
   };
 };
 
-export default function Profile({ users, allUsers }) {
+export default function Profile({ users, allUsers, use }) {
   const [motivation, setMotivation] = React.useState("");
   const [clique, setClique] = React.useState(false);
   const [changeProf, setchangeProf] = React.useState(false);
 
-  const { user, error, isLoading } = useUser();
+  // const { user, error, isLoading } = useUser();
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>{error.message}</div>;
+  // if (isLoading) return <div>Loading...</div>;
+  // if (error) return <div>{error.message}</div>;
 
   // si l'utilisateur est un admin
   if (users.admin) {
     return (
-      <Layout user={user} title="Profil">
+      <Layout user={use} title="Profil">
         <div>
           <h4>Récapitulatif Utilisateur</h4>
           <p>{users.firstName}</p>
@@ -90,7 +91,7 @@ export default function Profile({ users, allUsers }) {
     // si l'utilisateur est un prof
   } else if (!users.prof) {
     return (
-      <Layout user={user} title="Profil">
+      <Layout user={use} title="Profil">
         <div>
           <div>
             <h4>Récapitulatif Utilisateur</h4>
@@ -138,7 +139,7 @@ export default function Profile({ users, allUsers }) {
                   />
                   {motivation !== "" && clique === true ? (
                     <Link
-                      href={`api/updateWishTeacher?email=${user.email}&motivation=${motivation}`}
+                      href={`api/updateWishTeacher?email=${use.email}&motivation=${motivation}`}
                     >
                       <input type="submit" value="Envoyer" />
                     </Link>
@@ -153,7 +154,7 @@ export default function Profile({ users, allUsers }) {
   } else {
     // si l'utilisateur n'est pas un prof
     return (
-      <Layout user={user} title="Profil">
+      <Layout user={use} title="Profil">
         <div>
           <div>
             <h4>Récapitulatif Prof</h4>
