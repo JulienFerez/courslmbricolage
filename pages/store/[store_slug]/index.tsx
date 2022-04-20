@@ -31,7 +31,7 @@ export default withPageAuthRequired(function Profile({
   user,
 }) {
   return (
-    <StoresLayout user={user} title={slug.store_slug}>
+    <StoresLayout title={slug.store_slug}>
       <div className="containerList">
         {coursString[0].cours.map((element) => {
           return (
