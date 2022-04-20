@@ -1,5 +1,4 @@
 import { getSession, useUser } from "@auth0/nextjs-auth0";
-import { dividerClasses } from "@mui/material";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
 import React from "react";
