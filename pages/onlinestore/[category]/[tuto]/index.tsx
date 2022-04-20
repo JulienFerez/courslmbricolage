@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../../../../components/Layout";
+import StoresLayout from "../../../../components/StoresLayout";
 import { GetServerSideProps } from "next";
 import { getDatabase } from "../../../../src/database";
 import Link from "next/link";
@@ -27,7 +27,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const category = ({ tutoString, slug }) => {
   const { user, error, isLoading } = useUser();
   return (
-    <Layout user={user} title={slug.tuto}>
+    <StoresLayout title={slug.tuto}>
       <div>
         {tutoString[0].tutotest.map((element: any) => {
           if (element.title === slug.tuto) {
@@ -71,7 +71,7 @@ const category = ({ tutoString, slug }) => {
           }
         })}
       </div>
-    </Layout>
+    </StoresLayout>
   );
 };
 

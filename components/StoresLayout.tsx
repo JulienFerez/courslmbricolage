@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 
-const Layout = ({ user, children, title }): any => {
+const StoresLayout = ({ children, title }): any => {
   return (
     <>
       <Head>
@@ -25,44 +25,22 @@ const Layout = ({ user, children, title }): any => {
           </div>
 
           <div className="navButtons">
-            {user ? (
-              user[0]?._id !== undefined ? (
-                <div>
-                  <p>Bienvenue {user[0]?.firstName}</p>
-                </div>
-              ) : null
-            ) : null}
+            {/* <div>
+              <p>Bienvenue {user[0]?.firstName}</p>
+            </div> */}
 
             <div>
-              {user ? (
-                <Link href="/api/auth/logout" passHref={true}>
-                  <a>Déconnexion</a>
-                </Link>
-              ) : (
-                <Link href="/api/auth/login" passHref={true}>
-                  <a>Se connecter</a>
-                </Link>
-              )}
+              <Link href="/api/auth/logout" passHref={true}>
+                <a>Déconnexion</a>
+              </Link>
 
-              {user ? (
-                user[0]?._id !== undefined ? (
-                  <Link href="/profil" passHref={true}>
-                    <a>Profil</a>
-                  </Link>
-                ) : (
-                  <Link href="/form" passHref={true}>
-                    <a>Profil</a>
-                  </Link>
-                )
-              ) : null}
+              <Link href="/profil" passHref={true}>
+                <a>Profil</a>
+              </Link>
 
-              {user ? (
-                user[0]?._id !== undefined ? (
-                  <Link href="/cartStore" passHref={true}>
-                    <a>Panier</a>
-                  </Link>
-                ) : null
-              ) : null}
+              <Link href="/cartStore" passHref={true}>
+                <a>Panier</a>
+              </Link>
             </div>
           </div>
         </div>
@@ -129,22 +107,22 @@ const Layout = ({ user, children, title }): any => {
             <p>Contact</p>
             <ul>
               <li>
-                <Link href="/contact">
+                <Link href="/onlinestore/contact">
                   <a>Service client</a>
                 </Link>
               </li>
               <li>
-                <Link href="/profil">
+                <Link href="/onlinestore/profil">
                   <a>Mon compte</a>
                 </Link>
               </li>
               <li>
-                <Link href="/contact">
+                <Link href="/onlinestore/contact">
                   <a>Téléphone</a>
                 </Link>
               </li>
               <li>
-                <Link href="/contact">
+                <Link href="/onlinestore/contact">
                   <a>Mail</a>
                 </Link>
               </li>
@@ -221,4 +199,4 @@ const Layout = ({ user, children, title }): any => {
   );
 };
 
-export default Layout;
+export default StoresLayout;

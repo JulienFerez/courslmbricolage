@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../../../../components/Layout";
+import StoresLayout from "../../../../components/StoresLayout";
 import { GetServerSideProps } from "next";
 import { getDatabase } from "../../../../src/database";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
@@ -33,7 +33,7 @@ export default withPageAuthRequired(function Profile({
   const [form, setForm] = React.useState("");
 
   return (
-    <Layout user={user} title={slug.slug_details}>
+    <StoresLayout user={user} title={slug.slug_details}>
       <div>
         {coursString[0].cours.map((element: any) => {
           if (element.title === slug.slug_details) {
@@ -99,10 +99,10 @@ export default withPageAuthRequired(function Profile({
               </div>
             );
           } else {
-            <>toto</>;
+            null;
           }
         })}
       </div>
-    </Layout>
+    </StoresLayout>
   );
 });

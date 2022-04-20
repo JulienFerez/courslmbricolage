@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../../../components/Layout";
+import StoresLayout from "../../../components/StoresLayout";
 import { GetServerSideProps } from "next";
 import { getDatabase } from "../../../src/database";
 import Link from "next/link";
@@ -27,7 +27,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const category = ({ tutoString, slug }) => {
   const { user, error, isLoading } = useUser();
   return (
-    <Layout user={user} title={slug}>
+    <StoresLayout title={slug}>
       <div className="containerList">
         {tutoString[0].tutotest.map((element) => {
           return (
@@ -57,7 +57,7 @@ const category = ({ tutoString, slug }) => {
           </a>
         </Link>
       </div>
-    </Layout>
+    </StoresLayout>
   );
 };
 
