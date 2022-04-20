@@ -1,25 +1,37 @@
 import React from "react";
 import Layout from "../../components/Layout";
-import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Link from "next/link";
 import { getDatabase } from "../../src/database";
 import { GetServerSideProps } from "next";
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  res,
+}: any) => {
+  const session = getSession(req, res);
+  const email = session?.user.email;
+
   const mongodb = await getDatabase();
   const category = await mongodb.collection("category").find().toArray();
   const categoryString = await JSON.parse(JSON.stringify(category));
 
+  const allUsers = await mongodb
+    .collection("users")
+    .find({ email: email })
+    .toArray();
+
+  const users = await JSON.parse(JSON.stringify(allUsers));
   return {
     props: {
       category: categoryString,
+      users: users,
     },
   };
 };
-
-export default withPageAuthRequired(function Profile({ user, category }) {
+export default function StoreRayon({ users, category }): any {
   return (
-    <Layout user={user} title="Nos cours en magasins">
+    <Layout user={users} title="Nos cours en magasins">
       <div className="containerElementCategory">
         <div className="containerCategory">
           {category.map((element: any) => {
@@ -45,4 +57,4 @@ export default withPageAuthRequired(function Profile({ user, category }) {
       </div>
     </Layout>
   );
-});
+}

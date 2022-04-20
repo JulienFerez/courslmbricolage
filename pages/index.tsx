@@ -20,7 +20,6 @@ export const getServerSideProps: GetServerSideProps = async ({
     .toArray();
 
   const users = await JSON.parse(JSON.stringify(allUsers));
-  // console.log(users[0]._id);
 
   if (users[0]?._id !== undefined) {
     console.log("existe");
@@ -38,11 +37,12 @@ export const getServerSideProps: GetServerSideProps = async ({
 export default function Home({ users }): any {
   const { user, error, isLoading } = useUser();
   // console.log(users);
+  console.log(user);
 
   // si l'utilisateur est connecté
   if (user) {
     return (
-      <Layout user={user} title="Et si vous appreniez à le faire vous même ?">
+      <Layout user={users} title="Et si vous appreniez à le faire vous même ?">
         <div className="containerHomePage">
           <p>
             Vous souhaitez peindre vos murs, poser un mitigeur, rénover ou poser

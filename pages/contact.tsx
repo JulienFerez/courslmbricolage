@@ -4,10 +4,42 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import MailIcon from "@mui/icons-material/Mail";
 import Image from "next/image";
+import { GetServerSideProps } from "next";
+import { getSession } from "@auth0/nextjs-auth0";
+import { getDatabase } from "../src/database";
 
-const contact = ({ user }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  res,
+}: any) => {
+  const session = getSession(req, res);
+  const email = session?.user.email;
+
+  const mongodb = await getDatabase();
+
+  const allUsers = await mongodb
+    .collection("users")
+    .find({ email: email })
+    .toArray();
+
+  const users = await JSON.parse(JSON.stringify(allUsers));
+
+  if (users[0]?._id !== undefined) {
+    console.log("existe");
+  } else {
+    console.log("n'existe pas '");
+  }
+
+  return {
+    props: {
+      users: users,
+    },
+  };
+};
+
+const contact = ({ users }) => {
   return (
-    <Layout user={user} title="Contact">
+    <Layout user={users} title="Contact">
       <div className="containerContact">
         <h1>Assistance technique</h1>
         <span className="underline"></span>
