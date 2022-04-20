@@ -38,7 +38,7 @@ export default withPageAuthRequired(function Profile({
         {coursString[0].cours.map((element: any) => {
           if (element.title === slug.slug_details) {
             return (
-              <div>
+              <div className="pageCours">
                 <div className="ContainerCours" key={element.title}>
                   <div className="ContainerCoursImageDescription">
                     <div className="image">
@@ -61,21 +61,30 @@ export default withPageAuthRequired(function Profile({
                             <input
                               type="radio"
                               name="creneau"
+                              id={`{"day": "${slot.day}", "hours": "${slot.hours}", "id_prof": "${slot.id_prof}", "email": "${user.email}", "title":"${element.title}", "desc":"${element.description}", "imgURL":"${element.image}", "price":"${element.prix}"}`}
                               value={`{"day": "${slot.day}", "hours": "${slot.hours}", "id_prof": "${slot.id_prof}", "email": "${user.email}", "title":"${element.title}", "desc":"${element.description}", "imgURL":"${element.image}", "price":"${element.prix}"}`}
                               onChange={(e) => setForm(slot)}
                             />
-                            {slot.id_prof} &nbsp; &nbsp;
-                            {slot.day} &nbsp; &nbsp; {slot.hours}
+                            <div>
+                              <label
+                                htmlFor={`{"day": "${slot.day}", "hours": "${slot.hours}", "id_prof": "${slot.id_prof}", "email": "${user.email}", "title":"${element.title}", "desc":"${element.description}", "imgURL":"${element.image}", "price":"${element.prix}"}`}
+                              >
+                                {slot.id_prof}
+                              </label>
+                              <label
+                                htmlFor={`{"day": "${slot.day}", "hours": "${slot.hours}", "id_prof": "${slot.id_prof}", "email": "${user.email}", "title":"${element.title}", "desc":"${element.description}", "imgURL":"${element.image}", "price":"${element.prix}"}`}
+                              >
+                                {slot.day}, {slot.hours}
+                              </label>
+                            </div>
                           </div>
                         );
                       })}
-                      {/* <div className="boutonSlot"> */}
                       <input
                         type="submit"
                         value="Confirmer"
                         className="boutonSlot"
                       />
-                      {/* </div> */}
                     </form>
                   </div>
                 </div>

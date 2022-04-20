@@ -157,7 +157,7 @@ export default function Home({ users }): any {
         {/* pour acceder page contact  */}
         <div className="containerContact">
           <Link href="/contact" passHref={true}>
-            <button className="boutonIndex">Notre assistance technique</button>
+            <p className="boutonIndex">Notre assistance technique</p>
           </Link>
         </div>
       </Layout>
