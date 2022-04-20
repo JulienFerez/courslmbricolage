@@ -42,79 +42,93 @@ const CreateClass: NextPage<{ dispo: any; category: any; user: any }> = ({
   // console.log(category);
   return (
     <Layout user={user} title="Create Class">
-      <main>
+      <main className="mainForCreateClass">
         {/* date dispo */}
-        <label htmlFor="dispo">Choose a date</label>
-        <select
-          id="dispo"
-          name="dispo"
-          onChange={(e) => setDispos(e.currentTarget.value)}
-        >
-          <option value="null">veuillez selectionner</option>
+        {/* <label htmlFor="dispo">Choose a date</label> */}
+        <div className="divForSelection">
+          <select
+            className="selectionCours"
+            id="dispo"
+            name="dispo"
+            onChange={(e) => setDispos(e.currentTarget.value)}
+          >
+            <option value="null">Choisissez une date</option>
 
-          {dispo.map((element: any) => {
-            return (
-              <option value={element.day} key={element._id}>
-                {element.day}
-              </option>
-            );
-          })}
-        </select>
-        <p>{dispos}</p>
+            {dispo.map((element: any) => {
+              return (
+                <option value={element.day} key={element._id}>
+                  {element.day}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        {/* <p>{dispos}</p> */}
         {/* category */}
-        <label htmlFor="category">Choose a category</label>
-        <select
-          id="category"
-          name="category"
-          onChange={(e) => setCategories(e.currentTarget.value)}
-        >
-          <option value="null">veuillez selectionner</option>
+        {/* <label htmlFor="category">Choose a category</label> */}
+        <div className="divForSelection">
+          <select
+            className="selectionCours"
+            id="category"
+            name="category"
+            onChange={(e) => {
+              setCategories(e.currentTarget.value);
+              setClasses("null");
+            }}
+          >
+            <option value="null">Choisissez une catégorie</option>
 
-          {category.map((element: any) => {
-            return (
-              <option value={element.name} key={element._id}>
-                {element.name}
-              </option>
-            );
-          })}
-        </select>
-        <p>{categories}</p>
+            {category.map((element: any) => {
+              return (
+                <option value={element.name} key={element._id}>
+                  {element.name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        {/* <p>{categories}</p> */}
         {/* cours en fonction de la category */}
 
-        <label htmlFor="class">Choose a class</label>
-        <select
-          id="class"
-          name="class"
-          onChange={(e) => {
-            setClasses(e.currentTarget.value);
-          }}
-        >
-          <option value="null">veuillez selectionner</option>
-          {category.map((element: any) => {
-            if (element.name === categories) {
-              return element.cours.map((element: any, index: number) => {
-                return (
-                  <option
-                    value={`${index}${element.title}`}
-                    key={index}
-                    id={`index ${index}`}
-                  >
-                    {element.title}
-                  </option>
-                );
-              });
-            }
-          })}
-        </select>
-        <p>{classes}</p>
+        {/* <label htmlFor="class">Choose a class</label> */}
+        <div className="divForSelection">
+          <select
+            className="selectionCours"
+            id="class"
+            name="class"
+            onChange={(e) => {
+              setClasses(e.currentTarget.value);
+            }}
+          >
+            <option value="null">Choisissez un cours</option>
+            {category.map((element: any) => {
+              if (element.name === categories) {
+                return element.cours.map((element: any, index: number) => {
+                  return (
+                    <option
+                      value={`${index}${element.title}`}
+                      key={index}
+                      id={`index ${index}`}
+                    >
+                      {element.title}
+                    </option>
+                  );
+                });
+              }
+            })}
+          </select>
+        </div>
+        {/* <p>{classes}</p> */}
         {/* conditions pour afficher le bouton  */}
         {dispos !== "null" && categories !== "null" && classes !== "null" ? (
           <Link
             href={`/api/createClass?date=${dispos}&category=${categories}&class=${classes}`}
           >
-            Valider
+            <button className="buttonSubmitForm">Valider</button>
           </Link>
-        ) : null}
+        ) : (
+          <button className="buttonSubmitForm pasValide">Valider</button>
+        )}
       </main>
     </Layout>
   );

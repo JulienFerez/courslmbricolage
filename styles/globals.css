@@ -259,7 +259,6 @@ tfoot {
   }
 }
 
-
 /* Panier */
 
 .buttonGrp {
@@ -484,6 +483,46 @@ tfoot {
   }
   .ContainerCoursSlot {
     margin-top: 2rem;
+  }
+}
 
+/* CSS page CreateClass */
+
+.selectionCours {
+  width: 30vw;
+  border: none;
+}
+
+.divForSelection {
+  width: fit-content;
+  margin: auto;
+  padding: 1rem 3rem;
+  background-color: white;
+  margin-bottom: 2rem;
+  border-radius: 5px;
+  border: black solid 1px;
+}
+
+.mainForCreateClass {
+  padding: 3rem 0;
+}
+
+.pasValide {
+  border-color: grey;
+  color: grey;
+}
+
+.pasValide:hover {
+  background-color: white;
+  color: grey;
+  cursor: not-allowed;
+}
+
+@media (max-width: 850px) {
+  .selectionCours {
+    width: 60vw;
+  }
+  .divForSelection {
+    padding: 1rem;
   }
 }
