@@ -129,7 +129,6 @@ export default function Home({ users }): any {
           {/* pour acceder aux tutos */}
           <Link href="/onlinestore" passHref={true}>
             <div>
-              {" "}
               <Image
                 className="pictureHomePage"
                 width={300}
@@ -157,7 +156,7 @@ export default function Home({ users }): any {
         {/* pour acceder page contact  */}
         <div className="containerContact">
           <Link href="/contact" passHref={true}>
-            <p className="boutonIndex">Notre assistance technique</p>
+            <button className="boutonIndex">Notre assistance technique</button>
           </Link>
         </div>
       </Layout>
