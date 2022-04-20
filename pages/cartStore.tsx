@@ -27,6 +27,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 };
 
 export default withPageAuthRequired(function Profile({ panierString, user }) {
+  const [codePromo, setCodePromo] = React.useState("");
   let total: number = 0;
   if (panierString[0].panier.length > 0) {
     return (
@@ -51,12 +52,24 @@ export default withPageAuthRequired(function Profile({ panierString, user }) {
               </div>
             );
           })}
+          <input
+            className="inputCodePromo"
+            type="text"
+            name="codePromo"
+            placeholder="Code Promo (optionnel)"
+            onChange={(e) => setCodePromo(e.target.value)}
+          ></input>
           <div className="price">
             <span></span>
-            <h3 className="totalPrice">Prix total : {total} €</h3>
+            {codePromo === "FEWLINES" ? (
+              <h3 className="totalPrice">
+                Prix total (code actif): {total * 0.8} €
+              </h3>
+            ) : (
+              <h3 className="totalPrice">Prix total : {total} €</h3>
+            )}
             <span></span>
           </div>
-
           <div className="buttonGrp">
             <div className="buttonCart">
               <Link href={`/api/validClassBuy?email=${user.email}`}>
