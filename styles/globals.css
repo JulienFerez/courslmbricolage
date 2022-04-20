@@ -536,3 +536,213 @@ tfoot {
   width: 15rem;
   text-align: center;
 }
+
+/* CSS PAGE PROFIL */
+
+.containerProfil {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  max-width: 50rem;
+}
+.infoProfil {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  padding-bottom: 3rem;
+  padding-left: 3rem;
+}
+
+.infoUser {
+  border: 2px solid #0c6838;
+  border-radius: 10px;
+
+  padding: 4rem;
+  margin: 4rem;
+  max-height: 30rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
+}
+.giveClasse {
+  border: 2px solid #044222;
+  border-radius: 10px;
+  text-align: center;
+  width: 40rem;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
+}
+
+.Courspris {
+  border: 2px solid #044222;
+  width: 40rem;
+  border-radius: 10px;
+  text-align: center;
+  padding: 2rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
+}
+
+.slotProfile {
+  border: 2px solid #044222;
+  border-radius: 10px;
+  width: 30rem;
+  text-align: center;
+  margin: 1rem;
+}
+
+.butonCreateClass {
+  border: 2px solid #0c6838;
+  background-color: white;
+  padding: 0.5rem 2rem;
+
+  border-radius: 10px;
+  color: #0c6838;
+}
+
+.butonCreateClass:hover {
+  background-color: #0c6838;
+  color: white;
+  cursor: pointer;
+  border: #044222 solid 2px;
+  transition: all 0.3s ease-in;
+}
+@media (max-width: 850px) {
+  .giveClasse {
+    border: 2px solid #044222;
+    border-radius: 10px;
+    text-align: center;
+    width: 25rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
+  }
+
+  .Courspris {
+    border: 2px solid #044222;
+    width: 25rem;
+    border-radius: 10px;
+    text-align: center;
+    padding: 2rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
+  }
+  .slotProfile {
+    border: 2px solid #044222;
+    border-radius: 10px;
+    width: 20rem;
+    text-align: center;
+    justify-content: center;
+    margin: 0.5rem;
+  }
+}
+/* PAGE PROFIL CLIENT */
+.CoursprisClient {
+  border: 2px solid #044222;
+  border-radius: 10px;
+  text-align: center;
+
+  padding: 2rem;
+  width: 40rem;
+  max-height: 50rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
+}
+
+.devenirProf {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+
+  border: 2px solid #044222;
+  border-radius: 10px;
+  text-align: center;
+
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
+}
+
+.cours {
+  border: 2px solid #044222;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 850px) {
+  .infoProfil {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    padding: 5rem;
+  }
+
+  .devenirProf {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    width: 25rem;
+    border: 2px solid #044222;
+    border-radius: 10px;
+    text-align: center;
+
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
+  }
+  .CoursprisClient {
+    border: 2px solid #044222;
+    border-radius: 10px;
+    text-align: center;
+
+    width: 25rem;
+    max-height: 50rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
+  }
+}
+
+/* CSS PAGE PROFIL ADMIN */
+.demandeProf {
+  margin-top: 3rem;
+  width: 50rem;
+
+  border: 2px solid #044222;
+  border-radius: 10px;
+  text-align: center;
+  padding: 2rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
+}
+
+.butonRendreProf {
+  border: 2px solid #0c6838;
+  background-color: white;
+  padding: 0.5rem 2rem;
+
+  border-radius: 10px;
+  color: #0c6838;
+}
+
+.butonRendreProf:hover {
+  background-color: #0c6838;
+  color: white;
+  cursor: pointer;
+  border: #044222 solid 2px;
+  transition: all 0.3s ease-in;
+}
+
+.demande {
+  border: 2px solid #044222;
+  border-radius: 10px;
+  text-align: center;
+  margin: 2rem;
+}
+@media (max-width: 850px) {
+  .infoProfil {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 3rem;
+    padding-left: 3rem;
+  }
+  .demandeProf {
+    margin-top: 3rem;
+    width: 30rem;
+
+    border: 2px solid #044222;
+    border-radius: 10px;
+    text-align: center;
+    padding: 2rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
+  }
+}
