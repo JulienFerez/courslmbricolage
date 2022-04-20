@@ -55,7 +55,7 @@ export default withPageAuthRequired(function Profile({
         })}
       </div>
       <div className="bouton">
-        <Link href="/onlinestore">
+        <Link href="/store">
           <a>
             <button className="boutonIndex">
               Retour aux différents cours magasin

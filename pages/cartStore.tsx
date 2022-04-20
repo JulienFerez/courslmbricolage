@@ -93,7 +93,7 @@ export default withPageAuthRequired(function Profile({ panierString, user }) {
         <p className="emptyCartP">
           Il semblerait que votre panier soit vide... est-il en construction ?
         </p>
-        <div className="buttonCart">
+        <div className="buttonCartEmpty">
           <Link href="/store">
             <a>Découvrez nos offres !</a>
           </Link>
