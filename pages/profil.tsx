@@ -48,150 +48,223 @@ export default function Profile({ users, allUsers }) {
   if (users.admin) {
     return (
       <Layout user={user}>
-        <div>
-          <h4>Récapitulatif Utilisateur</h4>
-          <p>{users.firstName}</p>
-          <p>{users.lastName}</p>
-          <p>{users.email}</p>
-          <p>{users.adress}</p>
-          <p>{users.city}</p>
-          <p>{users.tel}</p>
-          <h4>Demande pour etre profs</h4>
-          {allUsers.map((element: any) => {
-            return element.wishTeacher?.demand ? (
-              <div>
-                <h5>
-                  {element.firstName} {element.lastName}
-                </h5>
-                <p>{element.wishTeacher.motivation}</p>
+        <div className="infoProfil">
+          <div className="infoUser">
+            <h4>Informations Admin</h4>
+            <span className="underline"></span>
+            <p>
+              <strong>Prénom : </strong>
+              {users.firstName}
+            </p>
+            <p>
+              <strong>Nom : </strong>
+              {users.lastName}
+            </p>
+            <p>
+              <strong>Email : </strong>
+              {users.email}
+            </p>
+            <p>
+              <strong>Adresse : </strong>
+              {users.adress}
+            </p>
+            <p>
+              <strong>Ville : </strong>
+              {users.city}
+            </p>
+            <p>
+              <strong>Téléphone : </strong>
+              {users.tel}
+            </p>
+          </div>
+          <div className="demandeProf">
+            <h4>Demande pour être profs</h4>
+            <span className="underline"></span>
+            {allUsers.map((element: any) => {
+              return element.wishTeacher?.demand ? (
+                <div className="demande">
+                  <h5>
+                    {element.firstName} {element.lastName}
+                  </h5>
+                  <p>{element.wishTeacher.motivation}</p>
 
-                {element.prof ? (
-                  <h5>Demande acceptée </h5>
-                ) : (
-                  <Link href={`api/updateUserToProf?email=${element.email}`}>
-                    <button
-                      onClick={() => {
-                        setchangeProf(true);
-                      }}
-                    >
-                      Rendre prof
-                    </button>
-                  </Link>
-                )}
+                  {element.prof ? (
+                    <h5>Demande acceptée </h5>
+                  ) : (
+                    <Link href={`api/updateUserToProf?email=${element.email}`}>
+                      <button
+                        className="butonRendreProf"
+                        onClick={() => {
+                          setchangeProf(true);
+                        }}
+                      >
+                        Rendre prof
+                      </button>
+                    </Link>
+                  )}
 
-                <br />
-              </div>
-            ) : null;
-          })}
+                  <br />
+                </div>
+              ) : null;
+            })}
+          </div>
         </div>
       </Layout>
     );
 
-    // si l'utilisateur est un prof
+    // si l'utilisateur est un client
   } else if (!users.prof) {
     return (
       <Layout user={user}>
-        <div>
-          <div>
-            <h4>Récapitulatif Utilisateur</h4>
-            <p>{users.firstName}</p>
-            <p>{users.lastName}</p>
-            <p>{users.email}</p>
-            <p>{users.adress}</p>
-            <p>{users.city}</p>
-            <p>{users.tel}</p>
-            <h4>Mes prochains cours</h4>
-            {users.classBuy.map((item: any) => {
-              console.log(item);
-              return (
-                <div>
-                  <p>{item.id_prof}</p>
-                  <p>{item.day}</p>
-                  <p>{item.hours}</p>
-                </div>
-              );
-            })}
-            <h4>Demander à devenir professeur</h4>
-
-            {users.wishTeacher.demand ? (
-              <p>Votre demande est en cours de traitement. </p>
-            ) : (
-              <div>
-                <form method="POST" action="api/updateWishTeacher">
-                  <div>
-                    <input
-                      type="radio"
-                      name="demande professeur"
-                      value={"oui"}
-                      onClick={() => {
-                        setClique(true);
-                      }}
-                    ></input>{" "}
-                    Je souhaite devenir professeur
+        <div className="infoProfil">
+          <div className="infoUser">
+            <h4>Informations personelles</h4>
+            <span className="underline"></span>
+            <p>
+              <strong>Prénom : </strong>
+              {users.firstName}
+            </p>
+            <p>
+              <strong>Nom : </strong>
+              {users.lastName}
+            </p>
+            <p>
+              <strong>Email : </strong>
+              {users.email}
+            </p>
+            <p>
+              <strong>Adresse : </strong>
+              {users.adress}
+            </p>
+            <p>
+              <strong>Ville : </strong>
+              {users.city}
+            </p>
+            <p>
+              <strong>Téléphone : </strong>
+              {users.tel}
+            </p>
+          </div>
+          <div className="containerProfil">
+            <div className="CoursprisClient">
+              <h4>Mes prochains cours</h4>
+              <span className="underline"></span>
+              {users.classBuy.map((item: any) => {
+                console.log(item);
+                return (
+                  <div className="cours">
+                    <p>{item.id_prof}</p>
+                    <p>{item.day}</p>
+                    <p>{item.hours}</p>
                   </div>
-                  <label htmlFor="firstName">Ecris ta motivation : </label>
-                  <input
-                    type="text"
-                    name="tel"
-                    required
-                    onChange={(e) => setMotivation(e.target.value)}
-                  />
-                  {motivation !== "" && clique === true ? (
-                    <Link
-                      href={`api/updateWishTeacher?email=${user.email}&motivation=${motivation}`}
-                    >
-                      <input type="submit" value="Envoyer" />
-                    </Link>
-                  ) : null}
-                </form>
-              </div>
-            )}
+                );
+              })}
+            </div>
+            <div className="devenirProf">
+              <h4>Demander à devenir professeur</h4>
+              <span className="underline"></span>
+              {users.wishTeacher.demand ? (
+                <p>Votre demande est en cours de traitement. </p>
+              ) : (
+                <div>
+                  <form method="POST" action="api/updateWishTeacher">
+                    <div>
+                      <input
+                        type="radio"
+                        name="demande professeur"
+                        value={"oui"}
+                        onClick={() => {
+                          setClique(true);
+                        }}
+                      ></input>{" "}
+                      Je souhaite devenir professeur
+                    </div>
+                    <label htmlFor="firstName">Ecris ta motivation : </label>
+                    <input
+                      type="text"
+                      name="tel"
+                      required
+                      onChange={(e) => setMotivation(e.target.value)}
+                    />
+                    {motivation !== "" && clique === true ? (
+                      <Link
+                        href={`api/updateWishTeacher?email=${user.email}&motivation=${motivation}`}
+                      >
+                        <input type="submit" value="Envoyer" />
+                      </Link>
+                    ) : null}
+                  </form>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </Layout>
     );
   } else {
-    // si l'utilisateur n'est pas un prof
+    // si l'utilisateur est un prof
     return (
       <Layout user={user}>
-        <div>
-          <div>
-            <h4>Récapitulatif Prof</h4>
-            <p>{users.firstName}</p>
-            <p>{users.lastName}</p>
-            <p>{users.email}</p>
-            <p>{users.adress}</p>
-            <p>{users.city}</p>
-            <p>{users.tel}</p>
-            <h4>Cours à donner</h4>
+        <div className="infoProfil">
+          <div className="infoUser">
+            <h4>Informations Personelles</h4>
+            <span className="underline"></span>
+            <p>
+              <strong>Prénom : </strong> {users.firstName}
+            </p>
+            <p>
+              <strong>Nom : </strong> {users.lastName}
+            </p>
+            <p>
+              <strong>Email : </strong>
+              {users.email}
+            </p>
+            <p>
+              <strong>Adresse : </strong> {users.adress}
+            </p>
+            <p>
+              <strong>Ville : </strong>
+              {users.city}
+            </p>
+            <p>
+              <strong>Téléphone : </strong> {users.tel}
+            </p>
+          </div>
+          <div className="containerProfil">
+            <div className="giveClasse">
+              <h4>Cours à donner</h4>
+              <span className="underline"></span>
 
-            <Link href="/createClass">
-              <button>Ajouter un cours</button>
-            </Link>
-
-            {users.class.map((item: any) => {
-              console.log(item);
-              return (
-                <div>
-                  <p>{item.id_prof}</p>
-                  <p>{item.day}</p>
-                  <p>{item.hours}</p>
-                </div>
-              );
-            })}
-
-            <h4>Mes prochains cours</h4>
-
-            {users.classBuy.map((item: any) => {
-              console.log(item);
-              return (
-                <div>
-                  <p>{item.id_prof}</p>
-                  <p>{item.day}</p>
-                  <p>{item.hours}</p>
-                </div>
-              );
-            })}
+              <Link href="/createClass">
+                <button className="butonCreateClass">Ajouter un cours</button>
+              </Link>
+            </div>
+            <div className="Coursadonner">
+              {users.class.map((item: any) => {
+                console.log(item);
+                return (
+                  <div className="slotProfile">
+                    <p>{item.id_prof}</p>
+                    <p>{item.day}</p>
+                    <p>{item.hours}</p>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="Courspris">
+              <h4>Mes prochains cours</h4>
+              <span className="underline"></span>
+              {users.classBuy.map((item: any) => {
+                console.log(item);
+                return (
+                  <div className="slotProfile">
+                    <p>{item.id_prof}</p>
+                    <p>{item.day}</p>
+                    <p>{item.hours}</p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </Layout>
