@@ -26,38 +26,42 @@ const Layout = ({ user, children, title }): any => {
 
           <div className="navButtons">
             {user ? (
-              <div>
-                <p>Bienvenue {user[0]?.firstName}</p>
-              </div>
+              user[0]?._id !== undefined ? (
+                <div>
+                  <p>Bienvenue {user[0]?.firstName}</p>
+                </div>
+              ) : null
             ) : null}
 
             <div>
               {user ? (
                 <Link href="/api/auth/logout" passHref={true}>
-                  <a>Deconnection</a>
+                  <a>Déconnexion</a>
                 </Link>
               ) : (
                 <Link href="/api/auth/login" passHref={true}>
                   <a>Se connecter</a>
                 </Link>
               )}
-              {/*
-              {user[0]?._id !== undefined ? (
-                <Link href="/profil" passHref={true}>
-                  <a>Profil</a>
-                </Link>
-              ) : null} */}
 
               {user ? (
-                <Link href="/profil" passHref={true}>
-                  <a>Profil</a>
-                </Link>
+                user[0]?._id !== undefined ? (
+                  <Link href="/profil" passHref={true}>
+                    <a>Profil</a>
+                  </Link>
+                ) : (
+                  <Link href="/form" passHref={true}>
+                    <a>Formulaire</a>
+                  </Link>
+                )
               ) : null}
 
               {user ? (
-                <Link href="/cartStore" passHref={true}>
-                  <a>Panier</a>
-                </Link>
+                user[0]?._id !== undefined ? (
+                  <Link href="/cartStore" passHref={true}>
+                    <a>Panier</a>
+                  </Link>
+                ) : null
               ) : null}
             </div>
           </div>
