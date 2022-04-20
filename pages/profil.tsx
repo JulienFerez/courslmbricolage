@@ -78,6 +78,7 @@ export default function Profile({ users, allUsers, use }) {
               {users.tel}
             </p>
           </div>
+
           <div className="demandeProf">
             <h4>Demande pour être profs</h4>
             <span className="underline"></span>
@@ -231,27 +232,29 @@ export default function Profile({ users, allUsers, use }) {
               <strong>Téléphone : </strong> {users.tel}
             </p>
           </div>
+
           <div className="containerProfil">
             <div className="giveClasse">
               <h4>Cours à donner</h4>
               <span className="underline"></span>
 
+              <div className="Coursadonner">
+                {users.class.map((item: any) => {
+                  console.log(item);
+                  return (
+                    <div className="slotProfile">
+                      <p>{item.class.slice(1)}</p>
+                      <p>{item.day}</p>
+                      <p>{item.hours}</p>
+                    </div>
+                  );
+                })}
+              </div>
               <Link href="/createClass">
                 <button className="butonCreateClass">Ajouter un cours</button>
               </Link>
             </div>
-            <div className="Coursadonner">
-              {users.class.map((item: any) => {
-                console.log(item);
-                return (
-                  <div className="slotProfile">
-                    <p>{item.id_prof}</p>
-                    <p>{item.day}</p>
-                    <p>{item.hours}</p>
-                  </div>
-                );
-              })}
-            </div>
+
             <div className="Courspris">
               <h4>Mes prochains cours</h4>
               <span className="underline"></span>

@@ -623,6 +623,7 @@ tfoot {
   padding: 2rem;
   max-width: 50rem;
 }
+
 .infoProfil {
   display: flex;
   flex-direction: row-reverse;
@@ -634,12 +635,12 @@ tfoot {
 .infoUser {
   border: 2px solid #0c6838;
   border-radius: 10px;
-
   padding: 4rem;
   margin: 4rem;
   max-height: 30rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
 }
+
 .giveClasse {
   border: 2px solid #044222;
   border-radius: 10px;
@@ -648,6 +649,9 @@ tfoot {
   margin-bottom: 3rem;
   padding: 2rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .Courspris {
@@ -657,6 +661,9 @@ tfoot {
   text-align: center;
   padding: 2rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .slotProfile {
@@ -665,6 +672,7 @@ tfoot {
   width: 30rem;
   text-align: center;
   margin: 1rem;
+  padding: 0.5rem;
 }
 
 .butonCreateClass {
@@ -683,13 +691,14 @@ tfoot {
   border: #044222 solid 2px;
   transition: all 0.3s ease-in;
 }
+
 @media (max-width: 850px) {
   .giveClasse {
     border: 2px solid #044222;
     border-radius: 10px;
     text-align: center;
-    width: 25rem;
-    margin-bottom: 3rem;
+    width: 70vw;
+    margin: 0 auto 3rem auto;
     padding: 2rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
   }
@@ -702,6 +711,7 @@ tfoot {
     padding: 2rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
   }
+
   .slotProfile {
     border: 2px solid #044222;
     border-radius: 10px;
@@ -710,7 +720,17 @@ tfoot {
     justify-content: center;
     margin: 0.5rem;
   }
+
+  .infoUser {
+    width: 70vw;
+    margin: 0 auto 1rem auto;
+  }
+
+  .infoProfil {
+    align-items: center;
+  }
 }
+
 /* PAGE PROFIL CLIENT */
 .CoursprisClient {
   border: 2px solid #044222;
@@ -774,7 +794,6 @@ tfoot {
 .demandeProf {
   margin-top: 3rem;
   width: 50rem;
-
   border: 2px solid #044222;
   border-radius: 10px;
   text-align: center;
@@ -786,9 +805,9 @@ tfoot {
   border: 2px solid #0c6838;
   background-color: white;
   padding: 0.5rem 2rem;
-
   border-radius: 10px;
   color: #0c6838;
+  margin-bottom: 1rem;
 }
 
 .butonRendreProf:hover {
@@ -805,18 +824,18 @@ tfoot {
   text-align: center;
   margin: 2rem;
 }
+
 @media (max-width: 850px) {
   .infoProfil {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-bottom: 3rem;
-    padding-left: 3rem;
+    align-items: center;
   }
-  .demandeProf {
-    margin-top: 3rem;
-    width: 30rem;
 
+  .demandeProf {
+    width: 70vw;
+    margin: 3rem auto;
     border: 2px solid #044222;
     border-radius: 10px;
     text-align: center;

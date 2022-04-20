@@ -1,8 +1,9 @@
-import { GetServerSideProps, NextPage } from "next";
+import { GetServerSideProps } from "next";
 import Link from "next/link";
 import React from "react";
 import Layout from "../components/Layout";
 import { getDatabase } from "../src/database";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 export const getServerSideProps: GetServerSideProps = async ({}: any) => {
   const mongodb = await getDatabase();
@@ -25,21 +26,21 @@ export const getServerSideProps: GetServerSideProps = async ({}: any) => {
     props: {
       dispo: dispo,
       category: category,
-      user: user,
+      users: user,
     },
   };
 };
 
-const CreateClass: NextPage<{ dispo: any; category: any; user: any }> = ({
+export default withPageAuthRequired(function Profile({
   dispo,
   category,
   user,
-}) => {
+}) {
   const [dispos, setDispos] = React.useState("null");
   const [categories, setCategories] = React.useState("null");
   const [classes, setClasses] = React.useState("null");
 
-  // console.log(category);
+  console.log(user);
   return (
     <Layout user={user} title="Create Class">
       <main className="mainForCreateClass">
@@ -63,9 +64,8 @@ const CreateClass: NextPage<{ dispo: any; category: any; user: any }> = ({
             })}
           </select>
         </div>
-        {/* <p>{dispos}</p> */}
+
         {/* category */}
-        {/* <label htmlFor="category">Choose a category</label> */}
         <div className="divForSelection">
           <select
             className="selectionCours"
@@ -87,10 +87,8 @@ const CreateClass: NextPage<{ dispo: any; category: any; user: any }> = ({
             })}
           </select>
         </div>
-        {/* <p>{categories}</p> */}
         {/* cours en fonction de la category */}
 
-        {/* <label htmlFor="class">Choose a class</label> */}
         <div className="divForSelection">
           <select
             className="selectionCours"
@@ -118,11 +116,10 @@ const CreateClass: NextPage<{ dispo: any; category: any; user: any }> = ({
             })}
           </select>
         </div>
-        {/* <p>{classes}</p> */}
         {/* conditions pour afficher le bouton  */}
         {dispos !== "null" && categories !== "null" && classes !== "null" ? (
           <Link
-            href={`/api/createClass?date=${dispos}&category=${categories}&class=${classes}`}
+            href={`/api/createClass?date=${dispos}&category=${categories}&class=${classes}&email=${user.name}`}
           >
             <button className="buttonSubmitForm">Valider</button>
           </Link>
@@ -132,5 +129,4 @@ const CreateClass: NextPage<{ dispo: any; category: any; user: any }> = ({
       </main>
     </Layout>
   );
-};
-export default CreateClass;
+});
