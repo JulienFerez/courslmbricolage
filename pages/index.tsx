@@ -42,11 +42,7 @@ export default function Home({ users }): any {
   // si l'utilisateur est connecté
   if (user) {
     return (
-<<<<<<< HEAD
-      <Layout user={user} title="Et si vous appreniez à le faire vous même ?">
-=======
       <Layout user={users} title="Et si vous appreniez à le faire vous même ?">
->>>>>>> c8c51bf (afichage du nom et condition pour longlet profil)
         <div className="containerHomePage">
           <p>
             Vous souhaitez peindre vos murs, poser un mitigeur, rénover ou poser

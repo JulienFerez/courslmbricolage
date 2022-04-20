@@ -31,11 +31,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 };
 export default function StoreRayon({ users, category }): any {
   return (
-<<<<<<< HEAD
-    <Layout user={user} title="Nos cours en magasins">
-=======
     <Layout user={users} title="Nos cours en magasins">
->>>>>>> c8c51bf (afichage du nom et condition pour longlet profil)
       <div className="containerElementCategory">
         <div className="containerCategory">
           {category.map((element: any) => {
