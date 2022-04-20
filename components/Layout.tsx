@@ -129,22 +129,22 @@ const Layout = ({ user, children, title }): any => {
             <p>Contact</p>
             <ul>
               <li>
-                <Link href="/onlinestore/contact">
+                <Link href="/contact">
                   <a>Service client</a>
                 </Link>
               </li>
               <li>
-                <Link href="/onlinestore/profil">
+                <Link href="/profil">
                   <a>Mon compte</a>
                 </Link>
               </li>
               <li>
-                <Link href="/onlinestore/contact">
+                <Link href="/contact">
                   <a>Téléphone</a>
                 </Link>
               </li>
               <li>
-                <Link href="/onlinestore/contact">
+                <Link href="/contact">
                   <a>Mail</a>
                 </Link>
               </li>

@@ -2,7 +2,6 @@ import React from "react";
 import Layout from "../../../../components/Layout";
 import { GetServerSideProps } from "next";
 import { getDatabase } from "../../../../src/database";
-import ReactPlayer from "react-player";
 import Link from "next/link";
 import { useUser } from "@auth0/nextjs-auth0";
 
@@ -34,11 +33,18 @@ const category = ({ tutoString, slug }) => {
           if (element.title === slug.tuto) {
             return (
               <div>
+                <div className="ContainerTutoVideo">
+                  <iframe
+                    width="640"
+                    height="360"
+                    src={element.urlvideo}
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
                 <div className="ContainerTuto" key={element.title}>
-                  <div className="ContainerTutoVideo">
-                    <ReactPlayer url={element.urlvideo} />
-                  </div>
-
                   <div className="ContainerTutoDescription">
                     {element.description}
                   </div>
@@ -46,13 +52,13 @@ const category = ({ tutoString, slug }) => {
                   <div className="ContainerTutoButton">
                     <div className="boutonTuto">
                       <Link href={`/onlinestore/${slug.category}/`}>
-                        <button className="boutonTuto">
+                        <button className="boutonIndex">
                           Retour aux différents cours
                         </button>
                       </Link>
                       <Link href="/onlinestore">
-                        <button className="boutonTuto">
-                          Retour aux différents rayon
+                        <button className="boutonIndex">
+                          Retour aux différentes catégories
                         </button>
                       </Link>
                     </div>
