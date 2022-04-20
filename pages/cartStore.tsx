@@ -19,7 +19,6 @@ export const getServerSideProps: GetServerSideProps = async ({
     .toArray();
 
   const panierString = await JSON.parse(JSON.stringify(panier));
-  console.log(panierString[0].panier);
 
   return {
     props: {
