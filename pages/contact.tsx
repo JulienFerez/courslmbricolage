@@ -22,15 +22,6 @@ export const getServerSideProps: GetServerSideProps = async ({
     .toArray();
 
   const users = await JSON.parse(JSON.stringify(allUsers));
-  console.log("ici");
-
-  console.log(users);
-
-  // if (users[0]?._id !== undefined) {
-  //   console.log("existe");
-  // } else {
-  //   console.log("n'existe pas '");
-  // }
 
   return {
     props: {
@@ -46,7 +37,7 @@ const contact = ({ users }) => {
     if (users[0]?.email === user.email) {
       return (
         <Layout user={users} title="Contact">
-          <h1>users</h1>
+          {/* <h1>users</h1> */}
           <div className="containerContact">
             <h1>Assistance technique</h1>
             <span className="underline"></span>
@@ -79,7 +70,7 @@ const contact = ({ users }) => {
     } else {
       return (
         <Layout user={user} title="Contact">
-          <h1>user mais pas users</h1>
+          {/* <h1>user mais pas users</h1> */}
           <div className="containerContact">
             <h1>Assistance technique</h1>
             <span className="underline"></span>
@@ -113,7 +104,7 @@ const contact = ({ users }) => {
   } else {
     return (
       <Layout user={undefined} title="Contact">
-        <h1>non user</h1>
+        {/* <h1>non user</h1> */}
         <div className="containerContact">
           <h1>Assistance technique</h1>
           <span className="underline"></span>

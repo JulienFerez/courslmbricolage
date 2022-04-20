@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../../components/Layout";
+import StoresLayout from "../../components/StoresLayout";
 import { GetServerSideProps } from "next";
 import { getDatabase } from "../../src/database";
 import Link from "next/link";
@@ -12,8 +12,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const categoryString = await JSON.parse(JSON.stringify(category));
 
-  console.log(categoryString);
-
   return {
     props: {
       category: categoryString,
@@ -25,7 +23,7 @@ const onlineStore = ({ category }) => {
   const { user, error, isLoading } = useUser();
 
   return (
-    <Layout user={user} title="Nos tutos en ligne">
+    <StoresLayout title="Nos tutos en ligne">
       <div className="containerElementCategory">
         <div className="containerCategory">
           {category.map((element: any) => {
@@ -55,7 +53,7 @@ const onlineStore = ({ category }) => {
           })}
         </div>
       </div>
-    </Layout>
+    </StoresLayout>
   );
 };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../../components/Layout";
+import StoresLayout from "../../components/StoresLayout";
 import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Link from "next/link";
 import { getDatabase } from "../../src/database";
@@ -31,7 +31,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 };
 export default function StoreRayon({ users, category }): any {
   return (
-    <Layout user={users} title="Nos cours en magasins">
+    <StoresLayout title="Nos cours en magasins">
       <div className="containerElementCategory">
         <div className="containerCategory">
           {category.map((element: any) => {
@@ -55,6 +55,6 @@ export default function StoreRayon({ users, category }): any {
           })}
         </div>
       </div>
-    </Layout>
+    </StoresLayout>
   );
 }
