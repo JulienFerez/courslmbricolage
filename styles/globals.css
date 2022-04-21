@@ -129,8 +129,50 @@ tfoot {
 
 .boutonIndex:hover {
   color: white;
-  background-color: #0c6838;
   cursor: pointer;
+}
+
+.imageHomePage > div:hover .carre {
+  background-color: #044222;
+  transition: background-color 0.5s ease-in;
+}
+
+.imageHomePage > div:hover .triangle {
+  border-bottom: 30px solid #044222;
+  transition: border-bottom 0.5s ease-in;
+}
+
+.imageHomePage > div:hover .bandeauImageHome {
+  background-color: #044222;
+  transition: background-color 0.5s ease-in;
+}
+
+.imageHomePage > div:hover {
+  box-shadow: 0 0.7rem 1.2rem rgba(0, 0, 0, 0.95);
+  transition: box-shadow 0.5s ease-in;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border: 0 solid transparent;
+  border-right-width: 30px;
+  border-left-width: 30px;
+  border-bottom: 30px solid #0c6838;
+  position: absolute;
+  bottom: 2rem;
+  right: 1rem;
+  transition: all 0.5s ease-out;
+}
+
+.carre {
+  width: 10px;
+  height: 15px;
+  position: absolute;
+  bottom: 2.4rem;
+  right: 3.7rem;
+  background-color: #0c6838;
+  transition: all 0.5s ease-out;
 }
 
 /* CSS homePage */
@@ -153,15 +195,13 @@ tfoot {
   text-align: center;
   color: white;
   cursor: pointer;
+  transition: all 0.5s ease-out;
 }
 
 .imageHomePage > div {
   position: relative;
   cursor: pointer;
-}
-
-.imageHomePage > div :hover {
-  background-color: #044222;
+  transition: all 0.5s ease-out;
 }
 
 .containerHomePage > p {
@@ -213,19 +253,22 @@ tfoot {
   display: flex;
   justify-content: center;
 }
-.bouton .boutonIndex {
+
+.boutonIndex {
   border: 2px solid #0c6838;
   background-color: white;
   padding: 1rem 3rem;
   margin-bottom: 2rem;
   border-radius: 10px;
   color: #0c6838;
+  transition: all 0.3s ease-out;
 }
 
-.bouton .boutonIndex:hover {
+.boutonIndex:hover {
   color: white;
   background-color: #0c6838;
   cursor: pointer;
+  transition: all 0.4s ease-in;
 }
 
 /* CSS pour form  */
