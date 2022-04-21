@@ -53,7 +53,9 @@ const category = ({ tutoString, slug }) => {
       <div className="bouton">
         <Link href="/onlinestore">
           <a>
-            <button className="boutonIndex">Retour aux différents rayon</button>
+            <button className="boutonIndex">
+              Retour aux différentes catégories
+            </button>
           </a>
         </Link>
       </div>

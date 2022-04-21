@@ -53,15 +53,14 @@ const contact = ({ users }) => {
               <div className="Element">
                 <PhoneIcon />
                 <h5>Assistance technique</h5>
-                <p>Appelez-nous au 0810 634 634</p>
+                <p>Appelez-nous </p>
+                <p> 0810 634 634</p>
               </div>
               <div className="Element">
                 <MailIcon />
                 <h5>Email</h5>
-                <p>
-                  Envoyez-nous vos questions <br />
-                  campus@leroymerlin.fr
-                </p>
+                <p>Envoyez-nous votre question </p>
+                <p>campus@leroymerlin.fr</p>
               </div>
             </div>
           </div>

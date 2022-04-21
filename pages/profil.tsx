@@ -181,6 +181,7 @@ export default function Profile({ users, allUsers, use }) {
                       ></input>{" "}
                       Je souhaite devenir professeur
                     </div>
+                    <br />
                     <label htmlFor="firstName">Ecris ta motivation : </label>
                     <input
                       type="text"
@@ -192,7 +193,13 @@ export default function Profile({ users, allUsers, use }) {
                       <Link
                         href={`api/updateWishTeacher?email=${use.email}&motivation=${motivation}`}
                       >
-                        <input type="submit" value="Envoyer" />
+                        <p>
+                          <input
+                            className="butonCreateClass"
+                            type="submit"
+                            value="Envoyer"
+                          />
+                        </p>
                       </Link>
                     ) : null}
                   </form>
