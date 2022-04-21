@@ -129,8 +129,50 @@ tfoot {
 
 .boutonIndex:hover {
   color: white;
-  background-color: #0c6838;
   cursor: pointer;
+}
+
+.imageHomePage > div:hover .carre {
+  background-color: #044222;
+  transition: background-color 0.5s ease-in;
+}
+
+.imageHomePage > div:hover .triangle {
+  border-bottom: 30px solid #044222;
+  transition: border-bottom 0.5s ease-in;
+}
+
+.imageHomePage > div:hover .bandeauImageHome {
+  background-color: #044222;
+  transition: background-color 0.5s ease-in;
+}
+
+.imageHomePage > div:hover {
+  box-shadow: 0 0.7rem 1.2rem rgba(0, 0, 0, 0.95);
+  transition: box-shadow 0.5s ease-in;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border: 0 solid transparent;
+  border-right-width: 30px;
+  border-left-width: 30px;
+  border-bottom: 30px solid #0c6838;
+  position: absolute;
+  bottom: 2rem;
+  right: 1rem;
+  transition: all 0.5s ease-out;
+}
+
+.carre {
+  width: 10px;
+  height: 15px;
+  position: absolute;
+  bottom: 2.4rem;
+  right: 3.7rem;
+  background-color: #0c6838;
+  transition: all 0.5s ease-out;
 }
 
 /* CSS homePage */
@@ -153,15 +195,13 @@ tfoot {
   text-align: center;
   color: white;
   cursor: pointer;
+  transition: all 0.5s ease-out;
 }
 
 .imageHomePage > div {
   position: relative;
   cursor: pointer;
-}
-
-.imageHomePage > div :hover {
-  background-color: #044222;
+  transition: all 0.5s ease-out;
 }
 
 .containerHomePage > p {
@@ -213,19 +253,22 @@ tfoot {
   display: flex;
   justify-content: center;
 }
-.bouton .boutonIndex {
+
+.boutonIndex {
   border: 2px solid #0c6838;
   background-color: white;
   padding: 1rem 3rem;
   margin-bottom: 2rem;
   border-radius: 10px;
   color: #0c6838;
+  transition: all 0.3s ease-out;
 }
 
-.bouton .boutonIndex:hover {
+.boutonIndex:hover {
   color: white;
   background-color: #0c6838;
   cursor: pointer;
+  transition: all 0.4s ease-in;
 }
 
 /* CSS pour form  */
@@ -356,10 +399,14 @@ tfoot {
 
 .cartContainer .imgCart {
   width: 30%;
+  padding-right: 2rem;
 }
 
 .cartContainer .imgCart > img {
-  width: 100%;
+  margin: 2rem;
+  padding: 2rem;
+  width: 15rem;
+  height: 15rem;
 }
 
 .price {
@@ -623,6 +670,7 @@ tfoot {
   padding: 2rem;
   max-width: 50rem;
 }
+
 .infoProfil {
   display: flex;
   flex-direction: row-reverse;
@@ -634,12 +682,12 @@ tfoot {
 .infoUser {
   border: 2px solid #0c6838;
   border-radius: 10px;
-
   padding: 4rem;
   margin: 4rem;
   max-height: 30rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
 }
+
 .giveClasse {
   border: 2px solid #044222;
   border-radius: 10px;
@@ -648,6 +696,9 @@ tfoot {
   margin-bottom: 3rem;
   padding: 2rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .Courspris {
@@ -657,6 +708,9 @@ tfoot {
   text-align: center;
   padding: 2rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .slotProfile {
@@ -665,6 +719,7 @@ tfoot {
   width: 30rem;
   text-align: center;
   margin: 1rem;
+  padding: 0.5rem;
 }
 
 .butonCreateClass {
@@ -683,13 +738,14 @@ tfoot {
   border: #044222 solid 2px;
   transition: all 0.3s ease-in;
 }
+
 @media (max-width: 850px) {
   .giveClasse {
     border: 2px solid #044222;
     border-radius: 10px;
     text-align: center;
-    width: 25rem;
-    margin-bottom: 3rem;
+    width: 70vw;
+    margin: 0 auto 3rem auto;
     padding: 2rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
   }
@@ -702,6 +758,7 @@ tfoot {
     padding: 2rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
   }
+
   .slotProfile {
     border: 2px solid #044222;
     border-radius: 10px;
@@ -710,13 +767,23 @@ tfoot {
     justify-content: center;
     margin: 0.5rem;
   }
+
+  .infoUser {
+    width: 70vw;
+    margin: 0 auto 1rem auto;
+  }
+
+  .infoProfil {
+    align-items: center;
+  }
 }
+
 /* PAGE PROFIL CLIENT */
 .CoursprisClient {
   border: 2px solid #044222;
   border-radius: 10px;
   text-align: center;
-
+  overflow: scroll;
   padding: 2rem;
   width: 40rem;
   max-height: 50rem;
@@ -726,7 +793,7 @@ tfoot {
 .devenirProf {
   margin-top: 3rem;
   margin-bottom: 3rem;
-
+  padding: 2rem;
   border: 2px solid #044222;
   border-radius: 10px;
   text-align: center;
@@ -763,7 +830,7 @@ tfoot {
     border: 2px solid #044222;
     border-radius: 10px;
     text-align: center;
-    overflow: scroll;
+
     width: 25rem;
     max-height: 50rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.85);
@@ -774,7 +841,6 @@ tfoot {
 .demandeProf {
   margin-top: 3rem;
   width: 50rem;
-
   border: 2px solid #044222;
   border-radius: 10px;
   text-align: center;
@@ -786,9 +852,9 @@ tfoot {
   border: 2px solid #0c6838;
   background-color: white;
   padding: 0.5rem 2rem;
-
   border-radius: 10px;
   color: #0c6838;
+  margin-bottom: 1rem;
 }
 
 .butonRendreProf:hover {
@@ -805,18 +871,18 @@ tfoot {
   text-align: center;
   margin: 2rem;
 }
+
 @media (max-width: 850px) {
   .infoProfil {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-bottom: 3rem;
-    padding-left: 3rem;
+    align-items: center;
   }
-  .demandeProf {
-    margin-top: 3rem;
-    width: 30rem;
 
+  .demandeProf {
+    width: 70vw;
+    margin: 3rem auto;
     border: 2px solid #044222;
     border-radius: 10px;
     text-align: center;
