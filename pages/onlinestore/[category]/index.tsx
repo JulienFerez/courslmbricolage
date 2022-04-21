@@ -108,7 +108,7 @@ const category = ({ tutoString, slug, allUsers }) => {
           </a>
         </Link>
       </div>
-    </StoresLayout>
+    </Layout>
   );
   }
 
