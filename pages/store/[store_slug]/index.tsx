@@ -1,5 +1,5 @@
 import React from "react";
-import StoresLayout from "../../../components/StoresLayout";
+import Layout from "../../../components/Layout";
 import { GetServerSideProps } from "next";
 import { getDatabase } from "../../../src/database";
 import Link from "next/link";
@@ -16,11 +16,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     .toArray();
 
   const coursString = await JSON.parse(JSON.stringify(category));
+  const getAllUsers = await mongodb.collection("users").find().toArray();
+
+  const allUsers = await JSON.parse(JSON.stringify(getAllUsers));
 
   return {
     props: {
       coursString: coursString,
       slug: slug,
+      allUsers: allUsers,
     },
   };
 };
@@ -29,9 +33,15 @@ export default withPageAuthRequired(function Profile({
   coursString,
   slug,
   user,
+  allUsers,
 }) {
+  let users = null;
+
+  allUsers.map((element: any) => {
+    element.email === user?.email ? (users = element) : null;
+  });
   return (
-    <StoresLayout title={slug.store_slug}>
+    <Layout user={[users]} title={slug.store_slug}>
       <div className="containerList">
         {coursString[0].cours.map((element) => {
           return (
@@ -63,6 +73,6 @@ export default withPageAuthRequired(function Profile({
           </a>
         </Link>
       </div>
-    </StoresLayout>
+    </Layout>
   );
 });

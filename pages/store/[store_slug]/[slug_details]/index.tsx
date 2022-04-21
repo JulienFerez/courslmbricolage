@@ -1,5 +1,5 @@
 import React from "react";
-import StoresLayout from "../../../../components/StoresLayout";
+import Layout from "../../../../components/Layout";
 import { GetServerSideProps } from "next";
 import { getDatabase } from "../../../../src/database";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
@@ -16,11 +16,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     .toArray();
 
   const coursString = await JSON.parse(JSON.stringify(cours));
+  const getAllUsers = await mongodb.collection("users").find().toArray();
 
+  const allUsers = await JSON.parse(JSON.stringify(getAllUsers));
   return {
     props: {
       coursString: coursString,
       slug: slug,
+      allUsers: allUsers,
     },
   };
 };
@@ -29,11 +32,16 @@ export default withPageAuthRequired(function Profile({
   coursString,
   slug,
   user,
+  allUsers,
 }) {
   const [form, setForm] = React.useState("");
+  let users = null;
 
+  allUsers.map((element: any) => {
+    element.email === user?.email ? (users = element) : null;
+  });
   return (
-    <StoresLayout title={slug.slug_details}>
+    <Layout user={[users]} title={slug.slug_details}>
       <div>
         {coursString[0].cours.map((element: any) => {
           if (element.title === slug.slug_details) {
@@ -103,6 +111,6 @@ export default withPageAuthRequired(function Profile({
           }
         })}
       </div>
-    </StoresLayout>
+    </Layout>
   );
 });
