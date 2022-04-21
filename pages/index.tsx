@@ -66,6 +66,8 @@ export default function Home({ users }): any {
                 src="/images/tutoOnline.jpg"
                 alt="tutoenligne"
               />
+              <span className="triangle"></span>
+              <span className="carre"></span>
               <p className="bandeauImageHome">Tuto en ligne</p>
             </div>
           </Link>
@@ -80,6 +82,8 @@ export default function Home({ users }): any {
                   src="/images/coursEnMag.jpg"
                   alt="coursenmag"
                 />
+                <span className="triangle"></span>
+                <span className="carre"></span>
                 <p className="bandeauImageHome">Cours en magasin</p>
               </div>
             </Link>
@@ -93,6 +97,8 @@ export default function Home({ users }): any {
                   src="/images/coursEnMag.jpg"
                   alt="coursenmag"
                 />
+                <span className="triangle"></span>
+                <span className="carre"></span>
                 <p className="bandeauImageHome">Cours en magasin</p>
               </div>
             </Link>
@@ -136,6 +142,8 @@ export default function Home({ users }): any {
                 src="/images/tutoOnline.jpg"
                 alt="tutoenligne"
               />
+              <span className="triangle"></span>
+              <span className="carre"></span>
               <p className="bandeauImageHome">Tuto en ligne</p>
             </div>
           </Link>
@@ -149,6 +157,8 @@ export default function Home({ users }): any {
                 src="/images/coursEnMag.jpg"
                 alt="coursenmag.png"
               />
+              <span className="triangle"></span>
+              <span className="carre"></span>
               <p className="bandeauImageHome">Cours en magasin</p>
             </div>
           </Link>
