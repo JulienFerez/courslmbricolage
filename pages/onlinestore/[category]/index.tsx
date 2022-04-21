@@ -110,6 +110,7 @@ const category = ({ tutoString, slug, allUsers }) => {
       </div>
     </StoresLayout>
   );
+  }
 
 };
 
