@@ -94,23 +94,24 @@ const category = ({ tutoString, slug, allUsers }) => {
                       />
                     </div>
                   </div>
-                </Link>
-              </div>
-            );
-          })}
-        </div>
-        <div className="bouton">
-          <Link href="/onlinestore">
-            <a>
-              <button className="boutonIndex">
-                Retour aux différents rayon
-              </button>
-            </a>
-          </Link>
-        </div>
-      </Layout>
-    );
+              </Link>
+            </div>
+          );
+        })}
+      </div>
+      <div className="bouton">
+        <Link href="/onlinestore">
+          <a>
+            <button className="boutonIndex">
+              Retour aux différentes catégories
+            </button>
+          </a>
+        </Link>
+      </div>
+    </Layout>
+  );
   }
+
 };
 
 export default category;
