@@ -94,8 +94,6 @@ const category = ({ tutoString, slug, allUsers }) => {
                       />
                     </div>
                   </div>
-
-                </div>
               </Link>
             </div>
           );
