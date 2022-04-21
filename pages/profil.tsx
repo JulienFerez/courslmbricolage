@@ -189,9 +189,10 @@ export default function Profile({ users, allUsers, use }) {
                       required
                       onChange={(e) => setMotivation(e.target.value)}
                     />
+
                     {motivation !== "" && clique === true ? (
                       <Link
-                        href={`api/updateWishTeacher?email=${use.email}&motivation=${motivation}`}
+                        href={`api/updateWishTeacher?email=${users.email}&motivation=${motivation}`}
                       >
                         <p>
                           <input
