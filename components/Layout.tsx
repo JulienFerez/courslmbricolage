@@ -25,14 +25,6 @@ const Layout = ({ user, children, title }): any => {
           </div>
 
           <div className="navButtons">
-            {user ? (
-              user[0]?._id !== undefined ? (
-                <div>
-                  <p>Bienvenue {user[0]?.firstName}</p>
-                </div>
-              ) : null
-            ) : null}
-
             <div>
               {user ? (
                 <Link href="/api/auth/logout" passHref={true}>

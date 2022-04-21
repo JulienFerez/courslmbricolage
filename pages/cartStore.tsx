@@ -19,7 +19,6 @@ export const getServerSideProps: GetServerSideProps = async ({
     .toArray();
 
   const panierString = await JSON.parse(JSON.stringify(panier));
-  console.log(panierString[0].panier);
 
   return {
     props: {
@@ -31,9 +30,10 @@ export const getServerSideProps: GetServerSideProps = async ({
 export default withPageAuthRequired(function Profile({ panierString, user }) {
   const [codePromo, setCodePromo] = React.useState("");
   let total: number = 0;
+
   if (panierString[0].panier.length > 0) {
     return (
-      <Layout user={user} title="Panier">
+      <Layout user={panierString} title="Panier">
         <div>
           {panierString[0].panier.map((item: any) => {
             total += Number(item.price);
@@ -91,7 +91,7 @@ export default withPageAuthRequired(function Profile({ panierString, user }) {
     );
   } else {
     return (
-      <Layout user={user} title="Panier">
+      <Layout user={panierString} title="Panier">
         <p className="emptyCartP">
           Il semblerait que votre panier soit vide... est-il en construction ?
         </p>
