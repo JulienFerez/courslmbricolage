@@ -1,11 +1,10 @@
 import React from "react";
 import Layout from "../components/Layout";
 import PhoneIcon from "@mui/icons-material/Phone";
-import StorefrontIcon from "@mui/icons-material/Storefront";
 import MailIcon from "@mui/icons-material/Mail";
 import Image from "next/image";
 import { GetServerSideProps } from "next";
-import { getSession } from "@auth0/nextjs-auth0";
+import { getSession, useUser } from "@auth0/nextjs-auth0";
 import { getDatabase } from "../src/database";
 
 export const getServerSideProps: GetServerSideProps = async ({
@@ -24,12 +23,6 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   const users = await JSON.parse(JSON.stringify(allUsers));
 
-  if (users[0]?._id !== undefined) {
-    console.log("existe");
-  } else {
-    console.log("n'existe pas '");
-  }
-
   return {
     props: {
       users: users,
@@ -38,36 +31,110 @@ export const getServerSideProps: GetServerSideProps = async ({
 };
 
 const contact = ({ users }) => {
-  return (
-    <Layout user={users} title="Contact">
-      <div className="containerContact">
-        <h1>Assistance technique</h1>
-        <span className="underline"></span>
-        <h3>Un problème, une question ? Contacter nos experts</h3>
+  const { user, error, isLoading } = useUser();
 
-        <Image
-          width={800}
-          height={500}
-          src="/images/assistanceTechnique.jpg"
-          alt="pageAssistance.jpg"
-        />
-        <div className="container">
-          <div className="Element">
-            <PhoneIcon />
-            <h5>Assistance technique</h5>
-            <p>Appelez-nous </p>
-            <p> 0810 634 634</p>
+  if (user) {
+    if (users[0]?.email === user.email) {
+      return (
+        <Layout user={users} title="Contact">
+          {/* <h1>users</h1> */}
+          <div className="containerContact">
+            <h1>Assistance technique</h1>
+            <span className="underline"></span>
+            <h3>Un problème, une question ? Contacter nos experts</h3>
+
+            <Image
+              width={800}
+              height={500}
+              src="/images/assistanceTechnique.jpg"
+              alt="pageAssistance.jpg"
+            />
+            <div className="container">
+              <div className="Element">
+                <PhoneIcon />
+                <h5>Assistance technique</h5>
+                <p>Appelez-nous au 0810 634 634</p>
+              </div>
+              <div className="Element">
+                <MailIcon />
+                <h5>Email</h5>
+                <p>
+                  Envoyez-nous vos questions <br />
+                  campus@leroymerlin.fr
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="Element">
-            <MailIcon />
-            <h5>Email</h5>
-            <p>Envoyez-nous votre question </p>
-            <p>campus@leroymerlin.fr</p>
+        </Layout>
+      );
+    } else {
+      return (
+        <Layout user={user} title="Contact">
+          {/* <h1>user mais pas users</h1> */}
+          <div className="containerContact">
+            <h1>Assistance technique</h1>
+            <span className="underline"></span>
+            <h3>Un problème, une question ? Contacter nos experts</h3>
+
+            <Image
+              width={800}
+              height={500}
+              src="/images/assistanceTechnique.jpg"
+              alt="pageAssistance.jpg"
+            />
+            <div className="container">
+              <div className="Element">
+                <PhoneIcon />
+                <h5>Assistance technique</h5>
+                <p>Appelez-nous au 0810 634 634</p>
+              </div>
+              <div className="Element">
+                <MailIcon />
+                <h5>Email</h5>
+                <p>
+                  Envoyez-nous vos questions <br />
+                  campus@leroymerlin.fr
+                </p>
+              </div>
+            </div>
+          </div>
+        </Layout>
+      );
+    }
+  } else {
+    return (
+      <Layout user={undefined} title="Contact">
+        {/* <h1>non user</h1> */}
+        <div className="containerContact">
+          <h1>Assistance technique</h1>
+          <span className="underline"></span>
+          <h3>Un problème, une question ? Contacter nos experts</h3>
+
+          <Image
+            width={800}
+            height={500}
+            src="/images/assistanceTechnique.jpg"
+            alt="pageAssistance.jpg"
+          />
+          <div className="container">
+            <div className="Element">
+              <PhoneIcon />
+              <h5>Assistance technique</h5>
+              <p>Appelez-nous au 0810 634 634</p>
+            </div>
+            <div className="Element">
+              <MailIcon />
+              <h5>Email</h5>
+              <p>
+                Envoyez-nous vos questions <br />
+                campus@leroymerlin.fr
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </Layout>
-  );
+      </Layout>
+    );
+  }
 };
 
 export default contact;

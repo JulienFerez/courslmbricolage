@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../../../components/Layout";
+import StoresLayout from "../../../components/StoresLayout";
 import { GetServerSideProps } from "next";
 import { getDatabase } from "../../../src/database";
 import Link from "next/link";
@@ -31,7 +31,7 @@ export default withPageAuthRequired(function Profile({
   user,
 }) {
   return (
-    <Layout user={user} title={slug.store_slug}>
+    <StoresLayout title={slug.store_slug}>
       <div className="containerList">
         {coursString[0].cours.map((element) => {
           return (
@@ -63,6 +63,6 @@ export default withPageAuthRequired(function Profile({
           </a>
         </Link>
       </div>
-    </Layout>
+    </StoresLayout>
   );
 });

@@ -13,9 +13,13 @@ export const getServerSideProps: GetServerSideProps = async ({
   const email = session?.user.email;
 
   const mongodb = await getDatabase();
-  const usersResponse = await mongodb.collection("users").find().toArray();
+  const usersResponse = await mongodb
+    .collection("users")
+    .find({ email: email })
+    .toArray();
 
   const users = await JSON.parse(JSON.stringify(usersResponse));
+  console.log(users);
 
   return {
     props: {
